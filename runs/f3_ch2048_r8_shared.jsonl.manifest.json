@@ -1,0 +1,42 @@
+{
+ "argv": [
+  "--ctx",
+  "16384",
+  "--budgets",
+  "512",
+  "--no-stats",
+  "--vram-frac",
+  "0.6",
+  "--throttle",
+  "0.3",
+  "--tasks",
+  "multikey,single_essay",
+  "--n",
+  "20",
+  "--rank",
+  "8",
+  "--prefill-chunk",
+  "2048",
+  "--methods",
+  "cobs,quest",
+  "--out",
+  "/home/kooki3/projects/dual-channel-attention/.claude/worktrees/stage1-analysis/runs/f3_ch2048_r8_shared.jsonl"
+ ],
+ "methods": [
+  "cobs",
+  "quest"
+ ],
+ "model": "/home/kooki3/models/qwen2.5-1.5b-instruct",
+ "code": {
+  "sparse_attn.py": "c9b56b7f89bc9928",
+  "run_e2e.py": "612c034c6e2bef91",
+  "tasks.py": "7fae458efab9389e",
+  "model:config.json": "98d2ff8cc47488d0",
+  "model:tokenizer.json": "c0382117ea329cdf",
+  "model:tokenizer_config.json": "5b5d4f65d0acd3b2",
+  "model:generation_config.json": "e558847a8b440261",
+  "model:model.safetensors": "size=3087467144 mtime=1792067224"
+ },
+ "dev_flags": [],
+ "legacy_rows_before_manifest": 0
+}

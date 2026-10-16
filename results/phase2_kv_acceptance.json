@@ -1,0 +1,11 @@
+{
+ "run": "/home/kooki3/projects/dual-channel-attention/.claude/worktrees/stage1-analysis/runs/phase2_g2f_confirm.jsonl",
+ "run_sha256": "a57d338ebd05a1f26155bbf8b290ed36ac608a112f0b8e2e5f2b1332d7cb721e",
+ "spec_sha256": "c801e0774eb58cb8e46421baecd751b1b54ff494d40b89dd318234f5c3553c70",
+ "receipt": "/home/kooki3/.local/state/work-handoff/runs/ef183d150ca1415d85f3f31919a19e90/receipt.json",
+ "receipt_sha256": "66844677e7079b62fe6a64cfc15b2deb0eeee5486d8e5f76e11210d025cd4077",
+ "job": "ef183d150ca1415d85f3f31919a19e90",
+ "kv_prediction_sha256": "0b80dc34d1b03e24b013ecefb7cd09a0df2b6ab22d57874c412e75c3aef1994a",
+ "kv_prediction_confirm_sha256": "f6996a827fe559405c46ed009b8940b057ad4095b4f0015c00f272eceaf496fb",
+ "phase2_gate_sha256": "2b2024b4c25e76e9905e6814acd894bfe78b506f38acee0b7ddf12896cfe3f4b"
+}

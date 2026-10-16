@@ -1,0 +1,36 @@
+cobs@512
+   inside   correct            24
+   inside   prefix_trunc       1
+   inside   substitution       4
+   straddle correct            2
+   straddle other              1
+   straddle prefix_trunc       3
+   straddle splice_distractor  1
+   straddle substitution       4
+   straddled errors, first wrong digit vs head-block digit count: {'first>hd': 4, 'first=hd': 2, 'first<hd': 3}
+nf_pt1@512
+   inside   correct            26
+   inside   substitution       3
+   straddle correct            5
+   straddle prefix_trunc       4
+   straddle substitution       2
+   straddled errors, first wrong digit vs head-block digit count: {'first=hd': 2, 'first<hd': 3, 'first>hd': 1}
+sum_dual@512
+   inside   correct            28
+   inside   substitution       1
+   straddle correct            6
+   straddle prefix_trunc       1
+   straddle substitution       4
+   straddled errors, first wrong digit vs head-block digit count: {'first>hd': 5}
+quest@512
+   inside   correct            25
+   inside   other              1
+   inside   substitution       3
+   straddle correct            9
+   straddle prefix_trunc       1
+   straddle substitution       1
+   straddled errors, first wrong digit vs head-block digit count: {'first>hd': 2}
+nf_hi1@512
+   inside   correct            27
+   inside   substitution       2
+   straddle correct            11

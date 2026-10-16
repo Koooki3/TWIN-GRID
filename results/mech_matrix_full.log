@@ -1,0 +1,70 @@
+prompts 63; straddled 34
+records by region (shared state): {'candidate': 11466} | OTHER-group cells: 0
+
+== SHARED state: 3x2 (exact category x selected), E1 prompt-equal and E2 dense-weight ==
+IN   cobs    prompts 29 records 5278 cells 63336
+     E1 {in/sel 0.578, in/not 0.088, out/sel 0.012, out/not 0.322, tie/sel 0.000, tie/not 0.000}
+     E2 {in/sel 0.933, in/not 0.066, out/sel 0.000, out/not 0.000, tie/sel 0.000, tie/not 0.000} (prompts used 29; excluded zero-mass 0, missing 0; total weight 2008)
+IN   nf_pt1  prompts 29 records 5278 cells 63336
+     E1 {in/sel 0.584, in/not 0.082, out/sel 0.009, out/not 0.325, tie/sel 0.000, tie/not 0.000}
+     E2 {in/sel 0.938, in/not 0.062, out/sel 0.000, out/not 0.000, tie/sel 0.000, tie/not 0.000} (prompts used 29; excluded zero-mass 0, missing 0; total weight 2008)
+IN   quest   prompts 29 records 5278 cells 63336
+     E1 {in/sel 0.486, in/not 0.180, out/sel 0.021, out/not 0.313, tie/sel 0.000, tie/not 0.000}
+     E2 {in/sel 0.915, in/not 0.085, out/sel 0.000, out/not 0.000, tie/sel 0.000, tie/not 0.000} (prompts used 29; excluded zero-mass 0, missing 0; total weight 2008)
+     full-moment definite-in (E1) {moment_in 0.690}
+PRE  cobs    prompts 34 records 2860 cells 34320
+     E1 {in/sel 0.437, in/not 0.176, out/sel 0.012, out/not 0.374, tie/sel 0.000, tie/not 0.000}
+     E2 {in/sel 0.774, in/not 0.225, out/sel 0.000, out/not 0.001, tie/sel 0.000, tie/not 0.000} (prompts used 34; excluded zero-mass 0, missing 0; total weight 965.3)
+PRE  nf_pt1  prompts 34 records 2860 cells 34320
+     E1 {in/sel 0.451, in/not 0.163, out/sel 0.009, out/not 0.378, tie/sel 0.000, tie/not 0.000}
+     E2 {in/sel 0.803, in/not 0.196, out/sel 0.000, out/not 0.001, tie/sel 0.000, tie/not 0.000} (prompts used 34; excluded zero-mass 0, missing 0; total weight 965.3)
+PRE  quest   prompts 34 records 2860 cells 34320
+     E1 {in/sel 0.473, in/not 0.140, out/sel 0.039, out/not 0.348, tie/sel 0.000, tie/not 0.000}
+     E2 {in/sel 0.842, in/not 0.157, out/sel 0.000, out/not 0.000, tie/sel 0.000, tie/not 0.000} (prompts used 34; excluded zero-mass 0, missing 0; total weight 965.3)
+     full-moment definite-in (E1) {moment_in 0.647}
+POST cobs    prompts 34 records 3328 cells 39936
+     E1 {in/sel 0.326, in/not 0.231, out/sel 0.007, out/not 0.436, tie/sel 0.000, tie/not 0.000}
+     E2 {in/sel 0.658, in/not 0.341, out/sel 0.000, out/not 0.001, tie/sel 0.000, tie/not 0.000} (prompts used 34; excluded zero-mass 0, missing 0; total weight 1332)
+POST nf_pt1  prompts 34 records 3328 cells 39936
+     E1 {in/sel 0.379, in/not 0.178, out/sel 0.007, out/not 0.436, tie/sel 0.000, tie/not 0.000}
+     E2 {in/sel 0.760, in/not 0.239, out/sel 0.000, out/not 0.001, tie/sel 0.000, tie/not 0.000} (prompts used 34; excluded zero-mass 0, missing 0; total weight 1332)
+POST quest   prompts 34 records 3328 cells 39936
+     E1 {in/sel 0.329, in/not 0.228, out/sel 0.017, out/not 0.426, tie/sel 0.000, tie/not 0.000}
+     E2 {in/sel 0.814, in/not 0.186, out/sel 0.000, out/not 0.001, tie/sel 0.000, tie/not 0.000} (prompts used 34; excluded zero-mass 0, missing 0; total weight 1332)
+     full-moment definite-in (E1) {moment_in 0.522}
+
+== IN − POST (E1), observed difference and prompt-bootstrap 95% interval ==
+  exact definite-in        observed +0.109  95% [+0.065, +0.156]  valid replicates 2000
+  full-moment definite-in  observed +0.168  95% [+0.116, +0.223]  valid replicates 2000
+  selected:cobs            observed +0.256  95% [+0.193, +0.320]  valid replicates 2000
+  selected:nf_pt1          observed +0.207  95% [+0.151, +0.266]  valid replicates 2000
+  selected:quest           observed +0.161  95% [+0.079, +0.238]  valid replicates 2000
+
+== STRATIFIED (E1 selected share, shared state): group / task / digit (1..7) ==
+  cobs: IN/multikey/d1=0.59(p=14,r=364,c=4368); IN/multikey/d2=0.61(p=14,r=364,c=4368); IN/multikey/d3=0.61(p=14,r=364,c=4368); IN/multikey/d4=0.59(p=14,r=364,c=4368); IN/multikey/d5=0.58(p=14,r=364,c=4368); IN/multikey/d6=0.57(p=14,r=364,c=4368); IN/multikey/d7=0.57(p=14,r=364,c=4368); IN/single_essay/d1=0.59(p=15,r=390,c=4680); IN/single_essay/d2=0.60(p=15,r=390,c=4680); IN/single_essay/d3=0.60(p=15,r=390,c=4680); IN/single_essay/d4=0.59(p=15,r=390,c=4680); IN/single_essay/d5=0.59(p=15,r=390,c=4680); IN/single_essay/d6=0.59(p=15,r=390,c=4680); IN/single_essay/d7=0.58(p=15,r=390,c=4680); POST/multikey/d2=0.49(p=5,r=130,c=1560); POST/multikey/d3=0.47(p=6,r=156,c=1872); POST/multikey/d4=0.39(p=10,r=260,c=3120); POST/multikey/d5=0.39(p=11,r=286,c=3432); POST/multikey/d6=0.33(p=14,r=364,c=4368); POST/multikey/d7=0.30(p=15,r=390,c=4680); POST/single_essay/d2=0.40(p=3,r=78,c=936); POST/single_essay/d3=0.40(p=6,r=156,c=1872); POST/single_essay/d4=0.37(p=11,r=286,c=3432); POST/single_essay/d5=0.38(p=13,r=338,c=4056); POST/single_essay/d6=0.37(p=15,r=390,c=4680); POST/single_essay/d7=0.34(p=19,r=494,c=5928); PRE/multikey/d1=0.44(p=15,r=390,c=4680); PRE/multikey/d2=0.46(p=10,r=260,c=3120); PRE/multikey/d3=0.46(p=9,r=234,c=2808); PRE/multikey/d4=0.50(p=5,r=130,c=1560); PRE/multikey/d5=0.50(p=4,r=104,c=1248); PRE/multikey/d6=0.41(p=1,r=26,c=312); PRE/single_essay/d1=0.46(p=19,r=494,c=5928); PRE/single_essay/d2=0.48(p=16,r=416,c=4992); PRE/single_essay/d3=0.50(p=13,r=338,c=4056); PRE/single_essay/d4=0.54(p=8,r=208,c=2496); PRE/single_essay/d5=0.51(p=6,r=156,c=1872); PRE/single_essay/d6=0.53(p=4,r=104,c=1248)
+  nf_pt1: IN/multikey/d1=0.59(p=14,r=364,c=4368); IN/multikey/d2=0.60(p=14,r=364,c=4368); IN/multikey/d3=0.61(p=14,r=364,c=4368); IN/multikey/d4=0.60(p=14,r=364,c=4368); IN/multikey/d5=0.58(p=14,r=364,c=4368); IN/multikey/d6=0.58(p=14,r=364,c=4368); IN/multikey/d7=0.58(p=14,r=364,c=4368); IN/single_essay/d1=0.59(p=15,r=390,c=4680); IN/single_essay/d2=0.60(p=15,r=390,c=4680); IN/single_essay/d3=0.60(p=15,r=390,c=4680); IN/single_essay/d4=0.60(p=15,r=390,c=4680); IN/single_essay/d5=0.60(p=15,r=390,c=4680); IN/single_essay/d6=0.60(p=15,r=390,c=4680); IN/single_essay/d7=0.59(p=15,r=390,c=4680); POST/multikey/d2=0.51(p=5,r=130,c=1560); POST/multikey/d3=0.49(p=6,r=156,c=1872); POST/multikey/d4=0.41(p=10,r=260,c=3120); POST/multikey/d5=0.42(p=11,r=286,c=3432); POST/multikey/d6=0.39(p=14,r=364,c=4368); POST/multikey/d7=0.37(p=15,r=390,c=4680); POST/single_essay/d2=0.46(p=3,r=78,c=936); POST/single_essay/d3=0.43(p=6,r=156,c=1872); POST/single_essay/d4=0.40(p=11,r=286,c=3432); POST/single_essay/d5=0.42(p=13,r=338,c=4056); POST/single_essay/d6=0.40(p=15,r=390,c=4680); POST/single_essay/d7=0.39(p=19,r=494,c=5928); PRE/multikey/d1=0.45(p=15,r=390,c=4680); PRE/multikey/d2=0.46(p=10,r=260,c=3120); PRE/multikey/d3=0.47(p=9,r=234,c=2808); PRE/multikey/d4=0.50(p=5,r=130,c=1560); PRE/multikey/d5=0.49(p=4,r=104,c=1248); PRE/multikey/d6=0.42(p=1,r=26,c=312); PRE/single_essay/d1=0.47(p=19,r=494,c=5928); PRE/single_essay/d2=0.48(p=16,r=416,c=4992); PRE/single_essay/d3=0.50(p=13,r=338,c=4056); PRE/single_essay/d4=0.54(p=8,r=208,c=2496); PRE/single_essay/d5=0.50(p=6,r=156,c=1872); PRE/single_essay/d6=0.52(p=4,r=104,c=1248)
+  quest: IN/multikey/d1=0.53(p=14,r=364,c=4368); IN/multikey/d2=0.53(p=14,r=364,c=4368); IN/multikey/d3=0.54(p=14,r=364,c=4368); IN/multikey/d4=0.54(p=14,r=364,c=4368); IN/multikey/d5=0.53(p=14,r=364,c=4368); IN/multikey/d6=0.52(p=14,r=364,c=4368); IN/multikey/d7=0.52(p=14,r=364,c=4368); IN/single_essay/d1=0.49(p=15,r=390,c=4680); IN/single_essay/d2=0.48(p=15,r=390,c=4680); IN/single_essay/d3=0.49(p=15,r=390,c=4680); IN/single_essay/d4=0.48(p=15,r=390,c=4680); IN/single_essay/d5=0.48(p=15,r=390,c=4680); IN/single_essay/d6=0.48(p=15,r=390,c=4680); IN/single_essay/d7=0.47(p=15,r=390,c=4680); POST/multikey/d2=0.45(p=5,r=130,c=1560); POST/multikey/d3=0.43(p=6,r=156,c=1872); POST/multikey/d4=0.37(p=10,r=260,c=3120); POST/multikey/d5=0.38(p=11,r=286,c=3432); POST/multikey/d6=0.37(p=14,r=364,c=4368); POST/multikey/d7=0.35(p=15,r=390,c=4680); POST/single_essay/d2=0.38(p=3,r=78,c=936); POST/single_essay/d3=0.34(p=6,r=156,c=1872); POST/single_essay/d4=0.32(p=11,r=286,c=3432); POST/single_essay/d5=0.35(p=13,r=338,c=4056); POST/single_essay/d6=0.34(p=15,r=390,c=4680); POST/single_essay/d7=0.33(p=19,r=494,c=5928); PRE/multikey/d1=0.49(p=15,r=390,c=4680); PRE/multikey/d2=0.51(p=10,r=260,c=3120); PRE/multikey/d3=0.52(p=9,r=234,c=2808); PRE/multikey/d4=0.61(p=5,r=130,c=1560); PRE/multikey/d5=0.60(p=4,r=104,c=1248); PRE/multikey/d6=0.47(p=1,r=26,c=312); PRE/single_essay/d1=0.53(p=19,r=494,c=5928); PRE/single_essay/d2=0.52(p=16,r=416,c=4992); PRE/single_essay/d3=0.56(p=13,r=338,c=4056); PRE/single_essay/d4=0.57(p=8,r=208,c=2496); PRE/single_essay/d5=0.55(p=6,r=156,c=1872); PRE/single_essay/d6=0.52(p=4,r=104,c=1248)
+
+== OWN trajectories (each arm's own TF state; states differ between arms) ==
+  cobs       IN   prompts 29 {exact_in 0.649, selected 0.568}
+  cobs       PRE  prompts 34 {exact_in 0.596, selected 0.428}
+  cobs       POST prompts 34 {exact_in 0.526, selected 0.294}
+  nf_pt1     IN   prompts 29 {exact_in 0.649, selected 0.571}
+  nf_pt1     PRE  prompts 34 {exact_in 0.596, selected 0.439}
+  nf_pt1     POST prompts 34 {exact_in 0.528, selected 0.351}
+  quest      IN   prompts 29 {exact_in 0.643, selected 0.479}
+  quest      PRE  prompts 34 {exact_in 0.593, selected 0.494}
+  quest      POST prompts 34 {exact_in 0.519, selected 0.306}
+  cobs+ftail IN   prompts 29 {exact_in 0.647, selected 1.000}
+  cobs+ftail PRE  prompts 34 {exact_in 0.597, selected 0.421}
+  cobs+ftail POST prompts 34 {exact_in 0.535, selected 1.000}
+
+== OUTCOME LINK (association only), straddled prompts ==
+  cobs       {'all': 34, 'no_divergence_in_gold_window': 11, 'digit_divergence': 23, 'at_first_post_digit': 4, 'non_digit_divergence': 0, 'strict_correct': 11, 'gold_continuation_prefix_match': 11, 'link_paired': 23, 'link_only_divergent_step': 0, 'link_only_other_steps': 0, 'link_neither': 0}
+             paired prompts: own-TF selected share at divergent step 0.292 (prompts 23); at other (teacher-forced) digit steps 0.375 (prompts 23)
+  nf_pt1     {'all': 34, 'no_divergence_in_gold_window': 15, 'digit_divergence': 19, 'at_first_post_digit': 3, 'non_digit_divergence': 0, 'strict_correct': 15, 'gold_continuation_prefix_match': 15, 'link_paired': 19, 'link_only_divergent_step': 0, 'link_only_other_steps': 0, 'link_neither': 0}
+             paired prompts: own-TF selected share at divergent step 0.318 (prompts 19); at other (teacher-forced) digit steps 0.392 (prompts 19)
+  quest      {'all': 34, 'no_divergence_in_gold_window': 21, 'digit_divergence': 13, 'at_first_post_digit': 3, 'non_digit_divergence': 0, 'strict_correct': 21, 'gold_continuation_prefix_match': 21, 'link_paired': 13, 'link_only_divergent_step': 0, 'link_only_other_steps': 0, 'link_neither': 0}
+             paired prompts: own-TF selected share at divergent step 0.294 (prompts 13); at other (teacher-forced) digit steps 0.398 (prompts 13)
+  cobs+ftail {'all': 34, 'no_divergence_in_gold_window': 27, 'digit_divergence': 7, 'at_first_post_digit': 0, 'non_digit_divergence': 0, 'strict_correct': 27, 'gold_continuation_prefix_match': 27, 'link_paired': 7, 'link_only_divergent_step': 0, 'link_only_other_steps': 0, 'link_neither': 0}
+             paired prompts: own-TF selected share at divergent step 0.308 (prompts 7); at other (teacher-forced) digit steps 0.699 (prompts 7)

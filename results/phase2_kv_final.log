@@ -1,0 +1,15 @@
+acceptance record written: results/phase2_kv_acceptance.json
+NOTE: P-kv labels only say whether a REGISTERED DESCRIPTIVE RULE was met; intervals are not adjusted for multiplicity; 'not supported' is not evidence of no effect.
+== registered P-kv (original script, unchanged) ==
+prompts 300; kv-crossing 99 (0.330); inside 201
+P1 share in [0.22, 0.42]: supported
+P2 cobs inside 192/201 vs crossing 52/99: diff +0.430 [+0.327, +0.530] -> supported
+P3 cobs: net gain crossing +39/99, inside -2/201; interaction +0.404 [+0.298, +0.505] -> supported
+P4 nf_pt1: net gain crossing +27/99, inside +2/201; interaction +0.263 [+0.167, +0.364] -> exploratory
+P4 quest: net gain crossing +1/99, inside +2/201; interaction +0.000 [-0.055, +0.056] -> exploratory
+
+K3 task × kv-crossing (descriptive; strict successes; paired gain = plus right & base wrong, loss = reverse)
+  multikey     inside  : n 103; cobs 98->97 (+1/-2); nf_pt1 97->95 (+2/-4); quest 101->102 (+1/-0)
+  multikey     crossing: n 47; cobs 21->43 (+22/-0); nf_pt1 28->43 (+16/-1); quest 44->44 (+2/-2)
+  single_essay inside  : n 98; cobs 94->93 (+2/-3); nf_pt1 90->94 (+6/-2); quest 92->93 (+1/-0)
+  single_essay crossing: n 52; cobs 31->48 (+18/-1); nf_pt1 36->48 (+12/-0); quest 47->48 (+2/-1)

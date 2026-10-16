@@ -1,0 +1,9 @@
+no manifest, rows present  rc=1 refused_for_expected_reason=True
+truncated tail             rc=1 refused_for_expected_reason=True
+duplicate row              rc=1 refused_for_expected_reason=True
+different method set       rc=1 refused_for_expected_reason=True
+different code identity    rc=1 refused_for_expected_reason=True
+missing required fields    rc=1 refused_for_expected_reason=True
+argv differs               rc=1 refused_for_expected_reason=True
+compatible row (control)   rc=0 passed_validation=True (positive sentinel, no model load)
+ALL OK

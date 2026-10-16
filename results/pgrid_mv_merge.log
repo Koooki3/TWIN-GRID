@@ -1,0 +1,17 @@
+(1) b32_mv_cobs/cobs: 20 rows, unique, = frozen lines 0..19
+(1) b32_mv_cobs/cobs+g2f: 20 rows, unique, = frozen lines 0..19
+(1) b32_mv_nf1/nf_pt1: 20 rows, unique, = frozen lines 0..19
+(1) b32_mv_nfg/nf_pt1+g2f: 20 rows, unique, = frozen lines 0..19
+(2) manifest b32_mv_cobs vs original: identical except --methods/--save_dir: True
+(2) manifest b32_mv_nf1 vs original: identical except --methods/--save_dir: True
+(2) manifest b32_mv_nfg vs original: identical except --methods/--save_dir: True
+(3) cobs 9326b43dafc3c707:niah_multivalue:0: pred equal to split rerun: True
+(3) cobs+g2f 9326b43dafc3c707:niah_multivalue:0: pred equal to split rerun: True
+(3) nf_pt1 9326b43dafc3c707:niah_multivalue:0: pred equal to split rerun: True
+(3) nf_pt1+g2f: archived OOM file is empty (nothing to compare)
+      20 /home/kooki3/projects/dual-channel-attention/.claude/worktrees/stage1-analysis/runs/ruler/pgrid_pred/b32/cobs+g2f@512/niah_multivalue.jsonl
+      20 /home/kooki3/projects/dual-channel-attention/.claude/worktrees/stage1-analysis/runs/ruler/pgrid_pred/b32/cobs@512/niah_multivalue.jsonl
+      20 /home/kooki3/projects/dual-channel-attention/.claude/worktrees/stage1-analysis/runs/ruler/pgrid_pred/b32/nf_pt1+g2f@512/niah_multivalue.jsonl
+      20 /home/kooki3/projects/dual-channel-attention/.claude/worktrees/stage1-analysis/runs/ruler/pgrid_pred/b32/nf_pt1@512/niah_multivalue.jsonl
+      80 total
+merge done; output sha256 -> results/pgrid_outputs_sha256.txt

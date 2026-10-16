@@ -1,0 +1,317 @@
+{
+ "multikey:1000": {
+  "prompt_sha": "90adcf5dd039c97e",
+  "token_sha": "a099c17117dc891d",
+  "L": 16376
+ },
+ "multikey:1001": {
+  "prompt_sha": "edb84fa8653a1f3d",
+  "token_sha": "a8a453aa6d6ca68d",
+  "L": 16372
+ },
+ "multikey:1003": {
+  "prompt_sha": "229cba67a39633fd",
+  "token_sha": "2ffad5bbc2027dc9",
+  "L": 16389
+ },
+ "multikey:1013": {
+  "prompt_sha": "2db1c853d6494199",
+  "token_sha": "28eeae2cc8abb058",
+  "L": 16389
+ },
+ "multikey:1015": {
+  "prompt_sha": "fb26967e849ef5d5",
+  "token_sha": "c6ed7af94239722b",
+  "L": 16369
+ },
+ "multikey:1018": {
+  "prompt_sha": "79fee839fbf7cde8",
+  "token_sha": "a6a17dd06dfd50de",
+  "L": 16318
+ },
+ "multikey:1021": {
+  "prompt_sha": "f934fc6df71ea335",
+  "token_sha": null,
+  "L": 16378
+ },
+ "multikey:1023": {
+  "prompt_sha": "4d8b6bfa3f49c5d7",
+  "token_sha": null,
+  "L": 16376
+ },
+ "multikey:1026": {
+  "prompt_sha": "58709ddad33a7666",
+  "token_sha": null,
+  "L": 16470
+ },
+ "multikey:1027": {
+  "prompt_sha": "422b43553dd88e84",
+  "token_sha": null,
+  "L": 16400
+ },
+ "multikey:1033": {
+  "prompt_sha": "5b37495fc5d33535",
+  "token_sha": null,
+  "L": 16428
+ },
+ "multikey:1045": {
+  "prompt_sha": "8eae20e7ce45f901",
+  "token_sha": null,
+  "L": 16390
+ },
+ "multikey:1048": {
+  "prompt_sha": "d43961d887b430c6",
+  "token_sha": null,
+  "L": 16361
+ },
+ "multikey:1052": {
+  "prompt_sha": "b4399e319096257a",
+  "token_sha": null,
+  "L": 16371
+ },
+ "multikey:1056": {
+  "prompt_sha": "d75592d131064849",
+  "token_sha": null,
+  "L": 16386
+ },
+ "single_essay:1003": {
+  "prompt_sha": "a4987f72d5da9999",
+  "token_sha": "38f024619c5e02ba",
+  "L": 16372
+ },
+ "single_essay:1006": {
+  "prompt_sha": "d5cc6381a8aa2d07",
+  "token_sha": "cdc7b1e76c1f22cc",
+  "L": 16363
+ },
+ "single_essay:1010": {
+  "prompt_sha": "638bc0d9a7e564e1",
+  "token_sha": "2723a420a94b5cff",
+  "L": 16280
+ },
+ "single_essay:1011": {
+  "prompt_sha": "e21448c262e0f832",
+  "token_sha": "d7f2dc7a8a0aa1b5",
+  "L": 16388
+ },
+ "single_essay:1018": {
+  "prompt_sha": "9a56e21f2e2d2d9e",
+  "token_sha": "8d13f9daa51c1f35",
+  "L": 16401
+ },
+ "single_essay:1021": {
+  "prompt_sha": "67fd1c390215ed31",
+  "token_sha": null,
+  "L": 16382
+ },
+ "single_essay:1022": {
+  "prompt_sha": "b911ab96179fca90",
+  "token_sha": null,
+  "L": 16363
+ },
+ "single_essay:1023": {
+  "prompt_sha": "182fbb59f3cc4a83",
+  "token_sha": null,
+  "L": 16396
+ },
+ "single_essay:1024": {
+  "prompt_sha": "32dacf482a34861a",
+  "token_sha": null,
+  "L": 16376
+ },
+ "single_essay:1029": {
+  "prompt_sha": "d6a4da0025459e5a",
+  "token_sha": null,
+  "L": 16393
+ },
+ "single_essay:1035": {
+  "prompt_sha": "50c2850200a4cd60",
+  "token_sha": null,
+  "L": 16384
+ },
+ "single_essay:1037": {
+  "prompt_sha": "a552b7b5cac9bf72",
+  "token_sha": null,
+  "L": 16407
+ },
+ "single_essay:1040": {
+  "prompt_sha": "f5e115c3c5a5482d",
+  "token_sha": null,
+  "L": 16330
+ },
+ "single_essay:1045": {
+  "prompt_sha": "e48ed17251fd7282",
+  "token_sha": null,
+  "L": 16383
+ },
+ "single_essay:1047": {
+  "prompt_sha": "268618a0f3d5cd30",
+  "token_sha": null,
+  "L": 16359
+ },
+ "single_essay:1048": {
+  "prompt_sha": "2eaf40599857ffbc",
+  "token_sha": null,
+  "L": 16378
+ },
+ "single_essay:1054": {
+  "prompt_sha": "593f50a80100b4b1",
+  "token_sha": null,
+  "L": 16380
+ },
+ "single_essay:1055": {
+  "prompt_sha": "196d3943faf19498",
+  "token_sha": null,
+  "L": 16406
+ },
+ "single_essay:1058": {
+  "prompt_sha": "6e11d57106eec9ca",
+  "token_sha": null,
+  "L": 16372
+ },
+ "multikey:1002": {
+  "prompt_sha": "481e323168f39cbf",
+  "token_sha": "4bd436e7959eb84b",
+  "L": 16366
+ },
+ "multikey:1004": {
+  "prompt_sha": "00ce433ca744d212",
+  "token_sha": "6e991b9883c31100",
+  "L": 16391
+ },
+ "multikey:1005": {
+  "prompt_sha": "d554f712c5566122",
+  "token_sha": "3c699f9d66b15a39",
+  "L": 16386
+ },
+ "multikey:1006": {
+  "prompt_sha": "f12e8b47b6084733",
+  "token_sha": "9619f2c9210a5b85",
+  "L": 16467
+ },
+ "multikey:1007": {
+  "prompt_sha": "a88c54d8193eaa95",
+  "token_sha": "18564d96931f507a",
+  "L": 16393
+ },
+ "multikey:1008": {
+  "prompt_sha": "6264db6b011a0988",
+  "token_sha": "3e10f37eafb5353e",
+  "L": 16344
+ },
+ "multikey:1009": {
+  "prompt_sha": "19bcac8af0a2e25b",
+  "token_sha": "f43dfdc49edce54f",
+  "L": 16389
+ },
+ "multikey:1010": {
+  "prompt_sha": "aa47dc095130e553",
+  "token_sha": "68e87e72cb8d8b33",
+  "L": 16342
+ },
+ "multikey:1011": {
+  "prompt_sha": "ec77b9340a68b711",
+  "token_sha": "81964b629c25eac0",
+  "L": 16361
+ },
+ "multikey:1012": {
+  "prompt_sha": "45e29d479318d89d",
+  "token_sha": "e35e8517c6726023",
+  "L": 16389
+ },
+ "multikey:1014": {
+  "prompt_sha": "832e861fc37e4903",
+  "token_sha": "a978589a6093fc49",
+  "L": 16350
+ },
+ "multikey:1016": {
+  "prompt_sha": "830c64a0b758c132",
+  "token_sha": "bea5ac801c57c2c5",
+  "L": 16403
+ },
+ "multikey:1017": {
+  "prompt_sha": "071335bf23584e6f",
+  "token_sha": "f936d4356fd3afb2",
+  "L": 16392
+ },
+ "multikey:1019": {
+  "prompt_sha": "08e1d7c00abf8304",
+  "token_sha": "5965cde44e77190d",
+  "L": 16371
+ },
+ "single_essay:1000": {
+  "prompt_sha": "d315005608c08b9f",
+  "token_sha": "4a1fe0fe2dd79e10",
+  "L": 16386
+ },
+ "single_essay:1001": {
+  "prompt_sha": "e42ae55ab6fe01b4",
+  "token_sha": "67fdc067f0f57f04",
+  "L": 16384
+ },
+ "single_essay:1002": {
+  "prompt_sha": "9266081dcd0c0f67",
+  "token_sha": "3ee778a51c6ba695",
+  "L": 16383
+ },
+ "single_essay:1004": {
+  "prompt_sha": "27c53da1a1f8b19b",
+  "token_sha": "e5fd770f59a5af76",
+  "L": 16384
+ },
+ "single_essay:1005": {
+  "prompt_sha": "80a924c7d3554619",
+  "token_sha": "6dd1459098e21a00",
+  "L": 16324
+ },
+ "single_essay:1007": {
+  "prompt_sha": "cec2f78c7890057a",
+  "token_sha": "527a4e33024b4947",
+  "L": 16363
+ },
+ "single_essay:1008": {
+  "prompt_sha": "2e2a6db2ce3790c9",
+  "token_sha": "f2b5fbf924b6d20b",
+  "L": 16363
+ },
+ "single_essay:1009": {
+  "prompt_sha": "62eada7920245742",
+  "token_sha": "bdae97ba931145da",
+  "L": 16468
+ },
+ "single_essay:1012": {
+  "prompt_sha": "b01a7611ac6dc848",
+  "token_sha": "0f89b4f83b20d5c0",
+  "L": 16385
+ },
+ "single_essay:1013": {
+  "prompt_sha": "25367728a06ce16c",
+  "token_sha": "05157efb264eb29a",
+  "L": 16374
+ },
+ "single_essay:1014": {
+  "prompt_sha": "a61c85d21e0a7a8c",
+  "token_sha": "54c2889d98563586",
+  "L": 16387
+ },
+ "single_essay:1015": {
+  "prompt_sha": "10f69032b70d57d5",
+  "token_sha": "0b971dffa23dcc67",
+  "L": 16380
+ },
+ "single_essay:1016": {
+  "prompt_sha": "57dad41d9f69b4c8",
+  "token_sha": "20a8e73c0d95dce6",
+  "L": 16368
+ },
+ "single_essay:1017": {
+  "prompt_sha": "43fe61e11269dd58",
+  "token_sha": "24805e02b295478a",
+  "L": 16393
+ },
+ "single_essay:1019": {
+  "prompt_sha": "ae38118935fb55a4",
+  "token_sha": "145ae30b8f543054",
+  "L": 16397
+ }
+}

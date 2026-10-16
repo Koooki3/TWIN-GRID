@@ -1,0 +1,12 @@
+g=0.11  macro 13 tasks (primary)             E[D] +1.05 pts (sd 0.58); power a=0.05 0.446, a=0.025 0.336
+g=0.11  coverable 7 tasks (Holm member)      E[D] +1.78 pts (sd 0.78); power a=0.05 0.662, a=0.025 0.548
+g=0.12  macro 13 tasks (primary)             E[D] +1.21 pts (sd 0.58); power a=0.05 0.547, a=0.025 0.440
+g=0.12  coverable 7 tasks (Holm member)      E[D] +2.06 pts (sd 0.78); power a=0.05 0.767, a=0.025 0.669
+g=0.13  macro 13 tasks (primary)             E[D] +1.35 pts (sd 0.60); power a=0.05 0.630, a=0.025 0.519
+g=0.13  coverable 7 tasks (Holm member)      E[D] +2.30 pts (sd 0.79); power a=0.05 0.836, a=0.025 0.762
+g=0.14  macro 13 tasks (primary)             E[D] +1.52 pts (sd 0.59); power a=0.05 0.735, a=0.025 0.639
+g=0.14  coverable 7 tasks (Holm member)      E[D] +2.60 pts (sd 0.79); power a=0.05 0.915, a=0.025 0.861
+g=0.15  macro 13 tasks (primary)             E[D] +1.64 pts (sd 0.59); power a=0.05 0.790, a=0.025 0.688
+g=0.15  coverable 7 tasks (Holm member)      E[D] +2.81 pts (sd 0.81); power a=0.05 0.938, a=0.025 0.896
+g=0.16  macro 13 tasks (primary)             E[D] +1.77 pts (sd 0.60); power a=0.05 0.845, a=0.025 0.753
+g=0.16  coverable 7 tasks (Holm member)      E[D] +3.04 pts (sd 0.84); power a=0.05 0.963, a=0.025 0.932

@@ -1,0 +1,14 @@
+shared prompts 80 (new file 80, reference 80)
+  cobs+g2f@512      72/80  {'multikey': 34, 'single_essay': 38}
+  cobs@512          64/80  {'multikey': 31, 'single_essay': 33}
+  dense@512         79/80  {'multikey': 39, 'single_essay': 40}
+  nf_pt1+g2f@512    73/80  {'multikey': 35, 'single_essay': 38}
+  nf_pt1@512        69/80  {'multikey': 31, 'single_essay': 38}
+  quest+g2f@512     73/80  {'multikey': 36, 'single_essay': 37}
+  quest@512         67/80  {'multikey': 32, 'single_essay': 35}
+  em+g2f@512        74/80  {'multikey': 36, 'single_essay': 38}
+  em@512            68/80  {'multikey': 33, 'single_essay': 35}
+  em+g2f@512 vs quest+g2f@512: better 1 worse 0 both right 73 both wrong 6
+  em+g2f@512 vs quest@512: better 7 worse 0 both right 67 both wrong 6
+  em@512 vs quest+g2f@512: better 0 worse 5 both right 68 both wrong 7
+  em@512 vs quest@512: better 1 worse 0 both right 67 both wrong 12

@@ -1,0 +1,7 @@
+Table III (27, 0, 0, 27) -> -0.0351 0.0351 published (-0.0351, 0.0351)
+Table III (20, 12, 2, 16) -> 0.0562 0.3292 published (0.0562, 0.3292)
+coverage at (0.8, 0.1, 0.05, 0.05): 0.952
+coverage at (0.7, 0.125, 0.025, 0.15): 0.954
+coverage at (0.6, 0.1, 0.1, 0.2): 0.952
+phase-1 dev cobs+g2f vs cobs (a,b,c,d)=(62,10,2,6): (0.1, 0.0133, 0.1921)
+PROBLEMS none

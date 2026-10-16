@@ -1,0 +1,5 @@
+L=16120; A one-shot prefill: ' 1. kick-off 2. fatigues 3. prosecution 4. chive 5. election 6. election 7. election 8. election 9. election 10. election'
+B chunked 2048: ' 1. kick-off 2. fatigues 3. prosecution 4. chive 5. election 6. election 7. election 8. election 9. election 10. election'
+A and B identical; min margin A 0.25 B 0.0
+A: smallest margin 0.2500 at step 14 after ' 1. kick-off 2. fatigues 3.': top-2 ' prosecution' vs ' ch'
+B: smallest margin 0.0000 at step 14 after ' 1. kick-off 2. fatigues 3.': top-2 ' prosecution' vs ' ch'

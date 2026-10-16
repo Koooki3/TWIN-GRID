@@ -1,0 +1,41 @@
+{
+ "model": "/home/kooki3/models/qwen2.5-1.5b-instruct",
+ "length": 16384,
+ "block": 32,
+ "budget": 1024,
+ "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+ "gpu_total_gib": 7.99560546875,
+ "weights_gib": 2.8753929138183594,
+ "phases": {
+  "prefill": {
+   "peak_alloc_gib": 3.629183769226074,
+   "peak_reserved_gib": 3.763671875
+  },
+  "decode:dense": {
+   "peak_alloc_gib": 3.5322346687316895,
+   "peak_reserved_gib": 3.763671875
+  },
+  "decode:cobs": {
+   "peak_alloc_gib": 3.6644458770751953,
+   "peak_reserved_gib": 3.802734375
+  },
+  "decode:cobs+g2f": {
+   "peak_alloc_gib": 3.7018871307373047,
+   "peak_reserved_gib": 3.822265625
+  },
+  "decode:nf_pt1": {
+   "peak_alloc_gib": 3.763943672180176,
+   "peak_reserved_gib": 3.859375
+  },
+  "decode:quest": {
+   "peak_alloc_gib": 3.5619988441467285,
+   "peak_reserved_gib": 3.859375
+  }
+ },
+ "peak_reserved_gib": 3.859375,
+ "fits_with_10pct_headroom": {
+  "24GB": true,
+  "48GB": true,
+  "80GB": true
+ }
+}

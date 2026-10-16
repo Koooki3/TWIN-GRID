@@ -1,0 +1,6 @@
+.venv/
+runs/smoke*
+__pycache__/
+# large diagnostic outputs (sha256 bound in results/mech_full_expected.json / mech_full_manifest.json); kept locally
+runs/mech_full_16k.jsonl
+runs/mech_check_16k.jsonl

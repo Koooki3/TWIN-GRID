@@ -1,0 +1,10 @@
+2026-10-16 ~12:36 +08:00
+job cf2c1dcd31df4d73bdf05ddf20e1ae6e (label causal-L2-7) was launched at 12:31 by the superseded
+scripts/queue_round5.sh (I replaced its orchestration but did not stop that queue), concurrently with
+force-probe-16k (job ba56d94522f74fd6bb863792e85fc60c).
+Stopped by terminating the queue's process group (Claude TaskStop) at ~12:35; `work-handoff stop` then found no
+live recorded supervisor ("interrupted_unreconciled", no signalled pids).
+`pgrep -fa causal_L` after the stop: no process. Only force-probe-16k's run_e2e.py remained on the GPU.
+Partial output runs/causal_L2-7_16k.jsonl: 6 rows (kept; partial; NOT analysed). Layer probes stay paused.
+force-probe-16k ran concurrently with this job for ~4 minutes; its outputs are deterministic per sample, but its
+wall-clock times in that window are not comparable.

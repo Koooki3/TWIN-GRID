@@ -1,0 +1,34 @@
+rows 80; per task {'multikey': 40, 'single_essay': 40}; missing 0
+integrity gate passed
+natural crossing (grid 0): 15/80
+
+| arm | multikey | single_essay | all |  (strict)
+|---|---|---|---|
+| dense | 39/40 | 40/40 | 79/80 |
+| cobs | 31/40 | 33/40 | 64/80 |
+| cobs+g2f | 34/40 | 38/40 | 72/80 |
+| nf_pt1 | 31/40 | 38/40 | 69/80 |
+| nf_pt1+g2f | 35/40 | 38/40 | 73/80 |
+| quest | 32/40 | 35/40 | 67/80 |
+| quest+g2f | 36/40 | 37/40 | 73/80 |
+
+paired (strict): X+g2f vs X — improve / worsen / both right / both wrong
+  cobs    multikey     {'both_right': 29, 'improve': 5, 'both_wrong': 4, 'worsen': 2}
+  cobs    single_essay {'both_right': 33, 'improve': 5, 'both_wrong': 2}
+  cobs    all          {'both_right': 62, 'improve': 10, 'both_wrong': 6, 'worsen': 2}
+  nf_pt1  multikey     {'both_right': 29, 'improve': 6, 'both_wrong': 3, 'worsen': 2}
+  nf_pt1  single_essay {'both_right': 37, 'both_wrong': 1, 'worsen': 1, 'improve': 1}
+  nf_pt1  all          {'both_right': 66, 'improve': 7, 'both_wrong': 4, 'worsen': 3}
+  quest   multikey     {'both_right': 32, 'improve': 4, 'both_wrong': 4}
+  quest   single_essay {'improve': 2, 'both_right': 35, 'both_wrong': 3}
+  quest   all          {'both_right': 67, 'improve': 6, 'both_wrong': 7}
+
+primary pilot: p10 = 0.125, p01 = 0.025, discordance d = 0.150 (n = 80); per task: multikey d = 0.175, single_essay d = 0.125
+
+planning (exact minimum over even total N in [20, 600]; power of exact two-sided McNemar, alpha 0.05):
+  Delta 0.08, d 0.150 (1.0x pilot): minimum even N with power >= 0.8 = 198; power at N = 600: 1.00
+  Delta 0.08, d 0.075 (0.5x pilot): IMPOSSIBLE (needs |Delta| <= d <= 1)
+  Delta 0.08, d 0.225 (1.5x pilot): minimum even N with power >= 0.8 = 292; power at N = 600: 0.98
+  Delta 0.05, d 0.150 (1.0x pilot): minimum even N with power >= 0.8 = 498; power at N = 600: 0.87
+  Delta 0.05, d 0.075 (0.5x pilot): minimum even N with power >= 0.8 = 246; power at N = 600: 1.00
+  Delta 0.05, d 0.225 (1.5x pilot): minimum even N with power >= 0.8 = None; power at N = 600: 0.71

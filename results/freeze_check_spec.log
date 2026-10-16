@@ -1,0 +1,10 @@
+repeated --rank 16         rc=1 wrote=False
+--block 16                 rc=1 wrote=False
+--local 32                 rc=1 wrote=False
+--straddle-only            rc=1 wrote=False
+--sparse-layers=2-7        rc=1 wrote=False
+--w-per-head               rc=1 wrote=False
+--allow-code-change        rc=1 wrote=False
+--n 100                    rc=1 wrote=False
+missing --strict-budget    rc=1 wrote=False
+PROBLEMS none

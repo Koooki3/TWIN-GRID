@@ -1,0 +1,45 @@
+{
+ "argv": [
+  "--ctx",
+  "16384",
+  "--budgets",
+  "512",
+  "--tasks",
+  "multikey,single_essay",
+  "--n",
+  "40",
+  "--seed0",
+  "100000",
+  "--seed-stream",
+  "--rank",
+  "8",
+  "--prefill-chunk",
+  "2048",
+  "--no-stats",
+  "--vram-frac",
+  "0.6",
+  "--throttle",
+  "0.3",
+  "--strict-budget",
+  "--methods",
+  "cobs,cobs+g2f,nf_pt1,nf_pt1+g2f,quest,quest+g2f",
+  "--out",
+  "/home/kooki3/projects/dual-channel-attention/.claude/worktrees/stage1-analysis/runs/phase1_g2f_dev.jsonl"
+ ],
+ "methods": [
+  "cobs",
+  "cobs+g2f",
+  "nf_pt1",
+  "nf_pt1+g2f",
+  "quest",
+  "quest+g2f"
+ ],
+ "model": "/home/kooki3/models/qwen2.5-1.5b-instruct",
+ "code": {
+  "sparse_attn.py": "f619ecd02d9c54f0",
+  "run_e2e.py": "1a6dcb852a65385b",
+  "tasks.py": "79305ee0a4e3fbb0"
+ },
+ "dev_flags": [],
+ "legacy_rows_before_manifest": 0
+}

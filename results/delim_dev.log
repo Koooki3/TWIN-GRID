@@ -1,0 +1,26 @@
+delim development (exploratory): 340 units, 140 samples
+(0) runner fidelity: cobs re-run pred == P-grid cobs pred in 140/140 samples; token_sha checks (re-run vs P-grid, sidecar vs delim rows): ok
+(1) overall and per task
+  all                          units  340: cobs 0.547  cobs+g2f 0.609  delim_cobs 0.541  | delim - g2f -0.068 [-0.109, -0.026]
+  niah_single_1                units   20: cobs 1.000  cobs+g2f 1.000  delim_cobs 1.000  | delim - g2f +0.000 [+0.000, +0.000]
+  niah_single_2                units   20: cobs 0.900  cobs+g2f 0.900  delim_cobs 0.800  | delim - g2f -0.100 [-0.300, +0.100]
+  niah_multikey_1              units   20: cobs 0.550  cobs+g2f 0.600  delim_cobs 0.650  | delim - g2f +0.050 [-0.150, +0.250]
+  niah_multikey_2              units   20: cobs 0.250  cobs+g2f 0.300  delim_cobs 0.300  | delim - g2f +0.000 [-0.200, +0.200]
+  niah_multivalue              units   80: cobs 0.237  cobs+g2f 0.338  delim_cobs 0.225  | delim - g2f -0.113 [-0.225, +0.000]
+  niah_multiquery              units   80: cobs 0.450  cobs+g2f 0.525  delim_cobs 0.388  | delim - g2f -0.138 [-0.225, -0.062]
+  vt                           units  100: cobs 0.770  cobs+g2f 0.820  delim_cobs 0.800  | delim - g2f -0.020 [-0.070, +0.030]
+(2) by 32-grid class
+  class in0                    units  229: cobs 0.581  cobs+g2f 0.624  delim_cobs 0.559  | delim - g2f -0.066 [-0.114, -0.019]
+  class repair                 units  106: cobs 0.453  cobs+g2f 0.566  delim_cobs 0.491  | delim - g2f -0.075 [-0.158, +0.000]
+  class fixed                  units    5: cobs 1.000  cobs+g2f 0.800  delim_cobs 0.800  | delim - g2f +0.000 [+0.000, +0.000]
+(3) by delim coverage
+  delim-covered                units  340: cobs 0.547  cobs+g2f 0.609  delim_cobs 0.541  | delim - g2f -0.068 [-0.109, -0.026]
+(4) coverage rates per task: TWIN-GRID (class != out) vs delim (unit inside one chunk or fixed)
+  niah_single_1    units   20: TWIN-GRID 1.000  delim 1.000
+  niah_single_2    units   20: TWIN-GRID 1.000  delim 1.000
+  niah_multikey_1  units   20: TWIN-GRID 1.000  delim 1.000
+  niah_multikey_2  units   20: TWIN-GRID 1.000  delim 1.000
+  niah_multivalue  units   80: TWIN-GRID 1.000  delim 1.000
+  niah_multiquery  units   80: TWIN-GRID 1.000  delim 1.000
+  vt               units  100: TWIN-GRID 1.000  delim 1.000
+(5) delim fill share: mean over samples 0.0307, max per call 0.0807; chunks per candidate token 0.0401 (single grid 0.0312, TWIN-GRID 0.0625); samples 140

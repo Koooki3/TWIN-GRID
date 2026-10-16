@@ -1,0 +1,46 @@
+{
+ "note": "EXPECTED identity written before the run (not derived from its output)",
+ "run": {
+  "code": {
+   "sparse_attn.py": "c9b56b7f89bc9928",
+   "run_digit_diag.py": "e862147b8f860ea9",
+   "tasks.py": "7fae458efab9389e"
+  },
+  "argv": [
+   "--prompts",
+   "/home/kooki3/projects/dual-channel-attention/.claude/worktrees/stage1-analysis/results/mech_prompts_full.json",
+   "--identities",
+   "/home/kooki3/docs/projects/attention-review/2026-10-16/hourly-mech-v2-1426/original-prompt-identities.json",
+   "--vram-frac",
+   "0.6",
+   "--throttle",
+   "0.3",
+   "--logger-check",
+   "--out",
+   "/home/kooki3/projects/dual-channel-attention/.claude/worktrees/stage1-analysis/runs/mech_full_16k.jsonl"
+  ],
+  "model": "/home/kooki3/models/qwen2.5-1.5b-instruct",
+  "model_id": {
+   "config.json": "98d2ff8cc47488d0",
+   "tokenizer.json": "c0382117ea329cdf",
+   "tokenizer_config.json": "5b5d4f65d0acd3b2",
+   "generation_config.json": "e558847a8b440261",
+   "model.safetensors": "size=3087467144 mtime=1792067224"
+  },
+  "identities_sha": "987c9a8dbd11057e",
+  "defaults": {
+   "ctx": 16384,
+   "budget": 512,
+   "rank": 8,
+   "prefill_chunk": 2048,
+   "arms": "cobs,nf_pt1,quest,cobs+ftail",
+   "vram_frac": 0.6,
+   "throttle": 0.3,
+   "local": 64,
+   "block": 32
+  }
+ },
+ "prompts_sha256": "559fef0ca97771aa4dfca7dc3b390d08fce25560ba3d485f4afedcf95e212316",
+ "identities_sha256": "987c9a8dbd11057e9c80fb51fb2ee24d1b7c71bbacf9d9a9cd406eadc11cd427",
+ "launch_script_sha256": "7760ca7371d3884840285fbf9a7417c991ba68d5859084ad8e3e4bfb7f345e42"
+}

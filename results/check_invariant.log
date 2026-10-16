@@ -1,0 +1,9 @@
+cobs        violation=False (expected False) tokens=[484, 484, 5808, 12, 0, 0, 0, 12] swaps=None
+quest       violation=False (expected False) tokens=[484, 484, 5808, 12, 0, 0, 0, 12] swaps=None
+nf_pt1      violation=False (expected False) tokens=[484, 484, 5808, 12, 0, 0, 0, 12] swaps=None
+cobs+g2f    violation=False (expected False) tokens=[484, 484, 5808, 12, 0, 0, 0, 12] swaps=None
+cobs+ftail  violation=False (expected False) tokens=[484, 484, 5808, 12, 0, 0, 0, 12] swaps=[12, 12]
+cobs+nbr    violation=False (expected False) tokens=[484, 484, 5808, 12, 0, 0, 0, 12] swaps=None
+quest+g2    violation=True (expected True) tokens=[388, 452, 5056, 12, 12, 96, 0, 12] swaps=None
+odd B refused for g2f (expected)
+ALL OK

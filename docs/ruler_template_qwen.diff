@@ -1,0 +1,12 @@
+diff --git a/scripts/data/template.py b/scripts/data/template.py
+index 9bbf7b9..e3ef32b 100644
+--- a/scripts/data/template.py
++++ b/scripts/data/template.py
+@@ -29,6 +29,7 @@ Templates = {
+ 
+     'Phi3': "<|user|>\n{task_template}<|end|>\n<|assistant|>\n",
+ 
++    'qwen2.5-chat': "<|im_start|>system\nYou are Qwen, created by Alibaba Cloud. You are a helpful assistant.<|im_end|>\n<|im_start|>user\n{task_template}<|im_end|>\n<|im_start|>assistant\n",
+     'meta-llama3': "<|begin_of_text|><|start_header_id|>user<|end_header_id|>\n\n{task_template}<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n\n",
+     
+     'jamba': "<|startoftext|><|bom|><|system|> <|eom|><|bom|><|user|> {task_template}<|eom|><|bom|><|assistant|>",

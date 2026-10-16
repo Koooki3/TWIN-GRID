@@ -1,0 +1,20 @@
+unit length distribution {11: 290, 12: 90}
+T4: class x outcome (b = baseline strict, t = +g2f strict); per file
+  phase1_g2f_dev.jsonl         fixed   n   1: cobs 1->1 (+0/-0) wrong after g2f 0; nf_pt1 1->1 (+0/-0) wrong after g2f 0; quest 1->1 (+0/-0) wrong after g2f 0
+  phase1_g2f_dev.jsonl         in0     n  54: cobs 47->47 (+2/-2) wrong after g2f 7; nf_pt1 49->48 (+2/-3) wrong after g2f 6; quest 44->49 (+5/-0) wrong after g2f 5
+  phase1_g2f_dev.jsonl         out     n   1: cobs 1->1 (+0/-0) wrong after g2f 0; nf_pt1 1->1 (+0/-0) wrong after g2f 0; quest 1->1 (+0/-0) wrong after g2f 0
+  phase1_g2f_dev.jsonl         repair  n  24: cobs 15->23 (+8/-0) wrong after g2f 1; nf_pt1 18->23 (+5/-0) wrong after g2f 1; quest 21->22 (+1/-0) wrong after g2f 2
+  phase2_g2f_confirm.jsonl     fixed   n   2: cobs 2->2 (+0/-0) wrong after g2f 0; nf_pt1 2->2 (+0/-0) wrong after g2f 0; quest 2->2 (+0/-0) wrong after g2f 0
+  phase2_g2f_confirm.jsonl     in0     n 199: cobs 190->188 (+3/-5) wrong after g2f 11; nf_pt1 185->187 (+8/-6) wrong after g2f 12; quest 191->193 (+2/-0) wrong after g2f 6
+  phase2_g2f_confirm.jsonl     repair  n  99: cobs 52->91 (+40/-1) wrong after g2f 8; nf_pt1 64->91 (+28/-1) wrong after g2f 8; quest 91->92 (+4/-3) wrong after g2f 7
+T5: grid-0 straddling units, baseline failures by (left part size incl. key phrase, value tokens right of the cut); all files pooled
+  cobs: left 1 rv 7: fail 0/10; left 2 rv 7: fail 2/8; left 3 rv 7: fail 5/16; left 4 rv 7: fail 5/10; left 5 rv 6: fail 4/8; left 5 rv 7: fail 4/5; left 6 rv 5: fail 6/9; left 6 rv 6: fail 2/5; left 7 rv 4: fail 3/6; left 7 rv 5: fail 1/2; left 8 rv 3: fail 8/15; left 8 rv 4: fail 0/1; left 9 rv 2: fail 6/10; left 9 rv 3: fail 1/5; left 10 rv 1: fail 7/9; left 11 rv 1: fail 2/5
+    by rv only: rv 1: 9/14; rv 2: 6/10; rv 3: 9/20; rv 4: 3/7; rv 5: 7/11; rv 6: 6/13; rv 7: 16/49
+  nf_pt1: left 1 rv 7: fail 0/10; left 2 rv 7: fail 1/8; left 3 rv 7: fail 3/16; left 4 rv 7: fail 5/10; left 5 rv 6: fail 4/8; left 5 rv 7: fail 4/5; left 6 rv 5: fail 4/9; left 6 rv 6: fail 2/5; left 7 rv 4: fail 3/6; left 7 rv 5: fail 0/2; left 8 rv 3: fail 3/15; left 8 rv 4: fail 0/1; left 9 rv 2: fail 4/10; left 9 rv 3: fail 2/5; left 10 rv 1: fail 3/9; left 11 rv 1: fail 3/5
+    by rv only: rv 1: 6/14; rv 2: 4/10; rv 3: 5/20; rv 4: 3/7; rv 5: 4/11; rv 6: 6/13; rv 7: 13/49
+  quest: left 1 rv 7: fail 0/10; left 2 rv 7: fail 1/8; left 3 rv 7: fail 1/16; left 4 rv 7: fail 3/10; left 5 rv 6: fail 1/8; left 5 rv 7: fail 0/5; left 6 rv 5: fail 0/9; left 6 rv 6: fail 2/5; left 7 rv 4: fail 0/6; left 7 rv 5: fail 0/2; left 8 rv 3: fail 0/15; left 8 rv 4: fail 0/1; left 9 rv 2: fail 0/10; left 9 rv 3: fail 1/5; left 10 rv 1: fail 1/9; left 11 rv 1: fail 1/5
+    by rv only: rv 1: 2/14; rv 2: 0/10; rv 3: 1/20; rv 4: 0/7; rv 5: 0/11; rv 6: 3/13; rv 7: 5/49
+T5 mirror: smaller fragment of size m on the LEFT (cut near the key start) vs on the RIGHT (value tail cut off); the two-level F model is symmetric in the fragment sizes
+  cobs: m 1: left 0/10 right 9/14; m 2: left 2/8 right 6/10; m 3: left 5/16 right 9/20; m 4: left 5/10 right 3/7; m 5: left 8/13 right 7/11  | m<=3: left 7/34 vs right 24/44
+  nf_pt1: m 1: left 0/10 right 6/14; m 2: left 1/8 right 4/10; m 3: left 3/16 right 5/20; m 4: left 5/10 right 3/7; m 5: left 8/13 right 4/11  | m<=3: left 4/34 vs right 15/44
+  quest: m 1: left 0/10 right 2/14; m 2: left 1/8 right 0/10; m 3: left 1/16 right 1/20; m 4: left 3/10 right 0/7; m 5: left 1/13 right 0/11  | m<=3: left 2/34 vs right 3/44

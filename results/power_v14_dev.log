@@ -1,0 +1,16 @@
+tokenizer 6b9e4e7fb171f92f; dev samples/task 30; coverable (7): niah_single_1, niah_single_2, niah_multikey_1, niah_multikey_2, niah_multivalue, niah_multiquery, vt
+  niah_single_1    coverable     unit length 8-13 mean 9.9; pi(repair) 0.333; out 0.000
+  niah_single_2    coverable     unit length 8-10 mean 9.3; pi(repair) 0.133; out 0.000
+  niah_single_3    not_coverable unit length 24-35 mean 29.1; pi(repair) 0.133; out 0.600
+  niah_multikey_1  coverable     unit length 8-11 mean 9.3; pi(repair) 0.267; out 0.000
+  niah_multikey_2  coverable     unit length 8-12 mean 9.5; pi(repair) 0.333; out 0.000
+  niah_multikey_3  not_coverable unit length 42-56 mean 48.3; pi(repair) 0.000; out 1.000
+  niah_multivalue  coverable     unit length 8-10 mean 9.2; pi(repair) 0.258; out 0.000
+  niah_multiquery  coverable     unit length 8-13 mean 9.5; pi(repair) 0.208; out 0.000
+  vt               coverable     unit length 6-10 mean 7.9; pi(repair) 0.233; out 0.000
+g=0.40  macro 13 tasks (primary)             E[D] +5.28 pts (sd 0.73); power a=0.05 1.000, a=0.025 1.000
+g=0.40  coverable 7 tasks (Holm member)      E[D] +9.07 pts (sd 1.10); power a=0.05 1.000, a=0.025 1.000
+g=0.20  macro 13 tasks (primary)             E[D] +2.37 pts (sd 0.64); power a=0.05 0.967, a=0.025 0.937
+g=0.20  coverable 7 tasks (Holm member)      E[D] +4.07 pts (sd 0.89); power a=0.05 0.996, a=0.025 0.993
+g=0.10  macro 13 tasks (primary)             E[D] +0.91 pts (sd 0.58); power a=0.05 0.361, a=0.025 0.256
+g=0.10  coverable 7 tasks (Holm member)      E[D] +1.54 pts (sd 0.74); power a=0.05 0.547, a=0.025 0.433

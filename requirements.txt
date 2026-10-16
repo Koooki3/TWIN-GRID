@@ -1,0 +1,7 @@
+# TWIN-GRID project environment (versions of the development machine; torch from the CUDA 12.8 index)
+torch==2.11.0
+transformers==5.19.0
+numpy==2.5.4
+scipy==1.18.1
+pyyaml==6.0.3
+requests==2.34.2  # RULER scripts/pred/model_wrappers.py (adapter acceptance reference)

@@ -1,0 +1,46 @@
+{
+ "run": {
+  "argv": [
+   "--prompts",
+   "/home/kooki3/projects/dual-channel-attention/.claude/worktrees/stage1-analysis/results/mech_prompts_full.json",
+   "--identities",
+   "/home/kooki3/docs/projects/attention-review/2026-10-16/hourly-mech-v2-1426/original-prompt-identities.json",
+   "--vram-frac",
+   "0.6",
+   "--throttle",
+   "0.3",
+   "--logger-check",
+   "--out",
+   "/home/kooki3/projects/dual-channel-attention/.claude/worktrees/stage1-analysis/runs/mech_full_16k.jsonl"
+  ],
+  "code": {
+   "run_digit_diag.py": "e862147b8f860ea9",
+   "sparse_attn.py": "c9b56b7f89bc9928",
+   "tasks.py": "7fae458efab9389e"
+  },
+  "defaults": {
+   "arms": "cobs,nf_pt1,quest,cobs+ftail",
+   "block": 32,
+   "budget": 512,
+   "ctx": 16384,
+   "local": 64,
+   "prefill_chunk": 2048,
+   "rank": 8,
+   "throttle": 0.3,
+   "vram_frac": 0.6
+  },
+  "identities_sha": "987c9a8dbd11057e",
+  "model": "/home/kooki3/models/qwen2.5-1.5b-instruct",
+  "model_id": {
+   "config.json": "98d2ff8cc47488d0",
+   "generation_config.json": "e558847a8b440261",
+   "model.safetensors": "size=3087467144 mtime=1792067224",
+   "tokenizer.json": "c0382117ea329cdf",
+   "tokenizer_config.json": "5b5d4f65d0acd3b2"
+  }
+ },
+ "mech_sha256": "0f9815a70fc6670d910548e1d011b133dbfbc226189f3f58ed58c4c4e54202b1",
+ "prompts_sha256": "559fef0ca97771aa4dfca7dc3b390d08fce25560ba3d485f4afedcf95e212316",
+ "identities_sha256": "987c9a8dbd11057e9c80fb51fb2ee24d1b7c71bbacf9d9a9cd406eadc11cd427",
+ "mech_matrix_sha256": "ffb913127f105b3bc16d444d1f426d82daa6d3ea900e1a857380f8daa21da553"
+}

@@ -1,0 +1,8 @@
+ctx 16384 disjoint slots 409
+ctx 32768 disjoint slots 204
+multikey 0 tokens 16360 chars 73706 slot len 98304 books ['pg10615.txt']
+single_essay 1 tokens 16377 chars 73742 slot len 98304 books ['pg10615.txt']
+multikey 2 tokens 16408 chars 74629 slot len 98304 books ['pg10615.txt']
+single_essay 408 tokens 16466 chars 77906 slot len 98304 books ['pg9662.txt']
+v1 prompts checked 80
+PROBLEMS none

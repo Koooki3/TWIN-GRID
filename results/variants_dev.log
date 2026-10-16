@@ -1,0 +1,32 @@
+variants development (exploratory): 340 units, 140 samples (of 140; samples lacking any arm are excluded by the fixed rule)
+arm        mem/tok       read/seed    all single  multi    in0 repair    out
+cobs          5.12               B  0.547  0.675  0.508  0.581  0.453    nan
+cobs+g2f     10.25               B  0.609  0.700  0.581  0.624  0.566    nan
+cobs+nb       5.12 2B (half seeds)  0.485  0.625  0.442  0.528  0.377    nan
+cobs+nbr      5.12 2B (half seeds)  0.465  0.562  0.435  0.502  0.358    nan
+cobs+nbh      5.12            <=2B  0.468  0.562  0.438  0.511  0.349    nan
+mean          4.00               B  0.559  0.688  0.519  0.638  0.368    nan
+mean+g2f      8.00               B  0.591  0.762  0.538  0.611  0.538    nan
+quest         8.00               B  0.850  0.787  0.869  0.878  0.783    nan
+per task:
+  niah_single_1    units   20: cobs 1.000  cobs+g2f 1.000  cobs+nb 1.000  cobs+nbr 1.000  cobs+nbh 1.000  mean 1.000  mean+g2f 1.000  quest 1.000
+  niah_single_2    units   20: cobs 0.900  cobs+g2f 0.900  cobs+nb 0.850  cobs+nbr 0.850  cobs+nbh 0.850  mean 0.850  mean+g2f 0.900  quest 1.000
+  niah_multikey_1  units   20: cobs 0.550  cobs+g2f 0.600  cobs+nb 0.350  cobs+nbr 0.350  cobs+nbh 0.300  mean 0.450  mean+g2f 0.700  quest 0.950
+  niah_multikey_2  units   20: cobs 0.250  cobs+g2f 0.300  cobs+nb 0.300  cobs+nbr 0.050  cobs+nbh 0.100  mean 0.450  mean+g2f 0.450  quest 0.200
+  niah_multivalue  units   80: cobs 0.237  cobs+g2f 0.338  cobs+nb 0.200  cobs+nbr 0.200  cobs+nbh 0.200  mean 0.287  mean+g2f 0.250  quest 0.887
+  niah_multiquery  units   80: cobs 0.450  cobs+g2f 0.525  cobs+nb 0.350  cobs+nbr 0.312  cobs+nbh 0.300  mean 0.438  mean+g2f 0.512  quest 0.912
+  vt               units  100: cobs 0.770  cobs+g2f 0.820  cobs+nb 0.710  cobs+nbr 0.720  cobs+nbh 0.740  mean 0.770  mean+g2f 0.790  quest 0.820
+E1 G ordering (G = acc(in0) - acc(repair), single-grid arm; R for +g2f):
+  G_cobs   +0.128 [+0.015, +0.238]  R 0.88  repair units 106
+  G_mean   +0.270 [+0.150, +0.380]  R 0.63  repair units 106
+  G_quest  +0.095 [+0.005, +0.191]  R nan  repair units 106
+  G_mean - G_cobs +0.142 [+0.045, +0.244]
+E2 / alternatives (difference in unit accuracy):
+  cobs+nbh - cobs+g2f (single-unit)  units   80: -0.137 [-0.225, -0.062]
+  cobs+nbh - cobs+g2f (multi-unit)   units  260: -0.142 [-0.196, -0.088]
+  cobs+nb - cobs+g2f                 units  340: -0.124 [-0.168, -0.079]
+  cobs+nbr - cobs+g2f                units  340: -0.144 [-0.191, -0.100]
+  cobs+nbh - cobs                    units  340: -0.079 [-0.124, -0.035]
+E3 equal summary memory (8 floats/token):
+  mean+g2f - quest                   units  340: -0.259 [-0.312, -0.212]
+  mean+g2f - mean                    units  340: +0.032 [-0.012, +0.074]

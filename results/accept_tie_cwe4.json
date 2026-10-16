@@ -1,0 +1,17 @@
+{
+ "uid": "c2eb7deea2e22447:cwe:4",
+ "input_equal": true,
+ "divergence_step": 14,
+ "ref_top2": [
+  " prosecution",
+  " ch"
+ ],
+ "ref_logits": [
+  18.75,
+  18.5
+ ],
+ "margin": 0.25,
+ "ulp": 0.125,
+ "swap": true,
+ "tie": true
+}

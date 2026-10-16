@@ -1,0 +1,14 @@
+unit_lengths v3: block 32, coverable iff max unit length <= 17; n=30; tokenizer.json 6b9e4e7fb171f92f; local 64
+  niah_single_1    coverable     units/sample 1-1  l 8-13 (mean 9.9)  units in0/repair/out/fixed 20/10/0/0  pi(repair) 0.333  cut inside value 9
+  niah_single_2    coverable     units/sample 1-1  l 8-10 (mean 9.3)  units in0/repair/out/fixed 26/4/0/0  pi(repair) 0.133  cut inside value 2
+  niah_single_3    not_coverable units/sample 1-1  l 24-35 (mean 29.1)  units in0/repair/out/fixed 7/4/18/1  pi(repair) 0.133  cut inside value 19
+  niah_multikey_1  coverable     units/sample 1-1  l 8-11 (mean 9.3)  units in0/repair/out/fixed 22/8/0/0  pi(repair) 0.267  cut inside value 1
+  niah_multikey_2  coverable     units/sample 1-1  l 8-12 (mean 9.5)  units in0/repair/out/fixed 19/10/0/1  pi(repair) 0.333  cut inside value 1
+  niah_multikey_3  not_coverable units/sample 1-1  l 42-56 (mean 48.3)  units in0/repair/out/fixed 0/0/30/0  pi(repair) 0.000  cut inside value 8
+  niah_multivalue  coverable     units/sample 4-4  l 8-10 (mean 9.2)  units in0/repair/out/fixed 86/31/0/3  pi(repair) 0.258  cut inside value 10
+  niah_multiquery  coverable     units/sample 4-4  l 8-13 (mean 9.5)  units in0/repair/out/fixed 91/25/0/4  pi(repair) 0.208  cut inside value 6
+  vt               coverable     units/sample 5-5  l 6-10 (mean 7.9)  units in0/repair/out/fixed 115/35/0/0  pi(repair) 0.233  cut inside value 14
+  cwe              no_unit       units/sample 0-0  -
+  fwe              no_unit       units/sample 0-0  -
+  qa_1             no_unit       units/sample 0-0  -
+  qa_2             no_unit       units/sample 0-0  -

@@ -1,0 +1,17 @@
+DEV — NOT CONFIRMATORY
+NOTE: P-kv labels only say whether a REGISTERED DESCRIPTIVE RULE was met; intervals are not adjusted for multiplicity; 'not supported' is not evidence of no effect.
+== registered P-kv (original script, unchanged) ==
+prompts 80; kv-crossing 25 (0.312); inside 55
+P1 share in [0.22, 0.42]: supported
+P2 cobs inside 48/55 vs crossing 16/25: diff +0.233 [+0.039, +0.438] -> supported
+P3 cobs: net gain crossing +8/25, inside +0/55; interaction +0.320 [+0.127, +0.516] -> supported
+P4 nf_pt1: net gain crossing +5/25, inside -1/55; interaction +0.218 [+0.047, +0.396] -> exploratory
+P4 quest: net gain crossing +1/25, inside +5/55; interaction -0.051 [-0.164, +0.065] -> exploratory
+
+K3 task × kv-crossing (descriptive; strict successes; paired gain = plus right & base wrong, loss = reverse)
+  multikey     inside  : n 31; cobs 26->25 (+1/-2); nf_pt1 26->26 (+2/-2); quest 25->28 (+3/-0)
+  multikey     crossing: n 9; cobs 5->9 (+4/-0); nf_pt1 5->9 (+4/-0); quest 7->8 (+1/-0)
+  single_essay inside  : n 24; cobs 22->23 (+1/-0); nf_pt1 24->23 (+0/-1); quest 20->22 (+2/-0)
+  single_essay crossing: n 16; cobs 11->15 (+4/-0); nf_pt1 14->15 (+1/-0); quest 15->15 (+0/-0)
+
+DEV — NOT CONFIRMATORY

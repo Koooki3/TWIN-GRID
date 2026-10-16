@@ -1,0 +1,275 @@
+{
+ "input_problems": [],
+ "steps": {
+  "same_input:niah_single_2": {
+   "official_path": "generate-fallback",
+   "n": 5,
+   "equal": 5,
+   "rows": [
+    {
+     "uid": "a3ceed3cf9f08e27:niah_single_2:0",
+     "same_text": true,
+     "score_ref": 100.0,
+     "score_ours": 100.0,
+     "ref": null,
+     "ours": null
+    },
+    {
+     "uid": "a3ceed3cf9f08e27:niah_single_2:1",
+     "same_text": true,
+     "score_ref": 100.0,
+     "score_ours": 100.0,
+     "ref": null,
+     "ours": null
+    },
+    {
+     "uid": "a3ceed3cf9f08e27:niah_single_2:2",
+     "same_text": true,
+     "score_ref": 100.0,
+     "score_ours": 100.0,
+     "ref": null,
+     "ours": null
+    },
+    {
+     "uid": "a3ceed3cf9f08e27:niah_single_2:3",
+     "same_text": true,
+     "score_ref": 100.0,
+     "score_ours": 100.0,
+     "ref": null,
+     "ours": null
+    },
+    {
+     "uid": "a3ceed3cf9f08e27:niah_single_2:4",
+     "same_text": true,
+     "score_ref": 100.0,
+     "score_ours": 100.0,
+     "ref": null,
+     "ours": null
+    }
+   ]
+  },
+  "same_input:cwe": {
+   "official_path": "generate-fallback",
+   "n": 5,
+   "equal": 4,
+   "rows": [
+    {
+     "uid": "c2eb7deea2e22447:cwe:0",
+     "same_text": true,
+     "score_ref": 10.0,
+     "score_ours": 10.0,
+     "ref": null,
+     "ours": null
+    },
+    {
+     "uid": "c2eb7deea2e22447:cwe:1",
+     "same_text": true,
+     "score_ref": 10.0,
+     "score_ours": 10.0,
+     "ref": null,
+     "ours": null
+    },
+    {
+     "uid": "c2eb7deea2e22447:cwe:2",
+     "same_text": true,
+     "score_ref": 30.0,
+     "score_ours": 30.0,
+     "ref": null,
+     "ours": null
+    },
+    {
+     "uid": "c2eb7deea2e22447:cwe:3",
+     "same_text": true,
+     "score_ref": 20.0,
+     "score_ours": 20.0,
+     "ref": null,
+     "ours": null
+    },
+    {
+     "uid": "c2eb7deea2e22447:cwe:4",
+     "same_text": false,
+     "score_ref": 40.0,
+     "score_ours": 40.0,
+     "ref": "1. kick-off 2. fatigues 3. prosecution 4. chive 5. election 6. election 7. election 8. election 9. election 10. election",
+     "ours": "1. kick-off 2. fatigues 3. chive 4. prosecution 5. election 6. election 7. election 8. election 9. election 10. election"
+    }
+   ]
+  },
+  "same_input:qa_1": {
+   "official_path": "generate-fallback",
+   "n": 5,
+   "equal": 5,
+   "rows": [
+    {
+     "uid": "b78bf4b6423d9acb:qa_1:0",
+     "same_text": true,
+     "score_ref": 100.0,
+     "score_ours": 100.0,
+     "ref": null,
+     "ours": null
+    },
+    {
+     "uid": "b78bf4b6423d9acb:qa_1:1",
+     "same_text": true,
+     "score_ref": 0.0,
+     "score_ours": 0.0,
+     "ref": null,
+     "ours": null
+    },
+    {
+     "uid": "b78bf4b6423d9acb:qa_1:2",
+     "same_text": true,
+     "score_ref": 0.0,
+     "score_ours": 0.0,
+     "ref": null,
+     "ours": null
+    },
+    {
+     "uid": "b78bf4b6423d9acb:qa_1:3",
+     "same_text": true,
+     "score_ref": 100.0,
+     "score_ours": 100.0,
+     "ref": null,
+     "ours": null
+    },
+    {
+     "uid": "b78bf4b6423d9acb:qa_1:4",
+     "same_text": true,
+     "score_ref": 0.0,
+     "score_ours": 0.0,
+     "ref": null,
+     "ours": null
+    }
+   ]
+  },
+  "order:cobs__cobs+g2f:cobs": {
+   "status": "identical",
+   "n": 5,
+   "covered_rows": {
+    "ab": 4,
+    "ba": 4,
+    "single": 4
+   },
+   "n_gen": {
+    "ab": [
+     42,
+     42,
+     72,
+     62,
+     43
+    ],
+    "ba": [
+     42,
+     42,
+     72,
+     62,
+     43
+    ],
+    "single": [
+     42,
+     42,
+     72,
+     62,
+     43
+    ]
+   }
+  },
+  "order:cobs__cobs+g2f:cobs+g2f": {
+   "status": "identical",
+   "n": 5,
+   "covered_rows": {
+    "ab": 3,
+    "ba": 3,
+    "single": 3
+   },
+   "n_gen": {
+    "ab": [
+     42,
+     42,
+     42,
+     42,
+     45
+    ],
+    "ba": [
+     42,
+     42,
+     42,
+     42,
+     45
+    ],
+    "single": [
+     42,
+     42,
+     42,
+     42,
+     45
+    ]
+   }
+  },
+  "order:quest__quest+g2f:quest": {
+   "status": "identical",
+   "n": 5,
+   "covered_rows": {
+    "ab": 3,
+    "ba": 3,
+    "single": 3
+   },
+   "n_gen": {
+    "ab": [
+     42,
+     42,
+     43,
+     42,
+     43
+    ],
+    "ba": [
+     42,
+     42,
+     43,
+     42,
+     43
+    ],
+    "single": [
+     42,
+     42,
+     43,
+     42,
+     43
+    ]
+   }
+  },
+  "order:quest__quest+g2f:quest+g2f": {
+   "status": "identical",
+   "n": 5,
+   "covered_rows": {
+    "ab": 3,
+    "ba": 3,
+    "single": 3
+   },
+   "n_gen": {
+    "ab": [
+     42,
+     52,
+     42,
+     54,
+     42
+    ],
+    "ba": [
+     42,
+     52,
+     42,
+     54,
+     42
+    ],
+    "single": [
+     42,
+     52,
+     42,
+     54,
+     42
+    ]
+   }
+  }
+ },
+ "passed": false
+}

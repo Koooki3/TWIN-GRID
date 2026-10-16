@@ -1,0 +1,18 @@
+d=128, r=8; shared projection basis W: 1024 floats per KV head per layer (not per block)
+  minimal per block quest     256 = min+max 2d
+  minimal per block em        384 = mean+min+max 3d
+  minimal per block mean      128 = mean d
+  minimal per block cobs      164 = mean d + proj. cov r(r+1)/2 = 128+36
+  minimal per block nf_pt1    548 = outlier d + bulk mean d + bulk box 2d + bulk proj. cov = 128+128+256+36
+arm          block grids  min/token  vs q32  vs q16    %KV impl/token
+quest16         16     1      16.00    2.00    1.00   6.2%      16.00
+quest32         32     1       8.00    1.00    0.50   3.1%       8.00
+quest32+g2f     32     2      16.00    2.00    1.00   6.2%      16.00
+em              32     1      12.00    1.50    0.75   4.7%      12.00
+mean            32     1       4.00    0.50    0.25   1.6%       4.00
+mean+g2f        32     2       8.00    1.00    0.50   3.1%       8.00
+cobs            32     1       5.12    0.64    0.32   2.0%      12.00
+cobs+g2f        32     2      10.25    1.28    0.64   4.0%      24.00
+cobs16          16     1      10.25    1.28    0.64   4.0%      16.00
+nf_pt1          32     1      17.12    2.14    1.07   6.7%      24.03
+nf_pt1+g2f      32     2      34.25    4.28    2.14  13.4%      48.06

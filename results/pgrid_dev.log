@@ -1,0 +1,11 @@
+P-grid development (exploratory): 340 units, 140 samples, tasks ['niah_multikey_1', 'niah_multikey_2', 'niah_multiquery', 'niah_multivalue', 'niah_single_1', 'niah_single_2', 'vt']
+  cobs   split by 16-grid units  237: cobs@16 0.633  cobs@32 0.489  cobs+g2f@32 0.565; g2f vs @16 +24/-40, diff -0.068 [-0.137, +0.000]
+  cobs   not split       units  103: cobs@16 0.748  cobs@32 0.680  cobs+g2f@32 0.709; g2f vs @16 +9/-13, diff -0.039 [-0.126, +0.050]
+  nf_pt1 split by 16-grid units  237: nf_pt1@16 0.717  nf_pt1@32 0.515  nf_pt1+g2f@32 0.586; g2f vs @16 +11/-42, diff -0.131 [-0.181, -0.078]
+  nf_pt1 not split       units  103: nf_pt1@16 0.874  nf_pt1@32 0.689  nf_pt1+g2f@32 0.699; g2f vs @16 +2/-20, diff -0.175 [-0.257, -0.088]
+  cobs   32-grid class in0    units  229: cobs@32 0.581  cobs+g2f 0.624  cobs@16 0.668
+  cobs   32-grid class repair units  106: cobs@32 0.453  cobs+g2f 0.566  cobs@16 0.651
+  cobs   32-grid class fixed  units    5: cobs@32 1.000  cobs+g2f 0.800  cobs@16 1.000
+  nf_pt1 32-grid class in0    units  229: nf_pt1@32 0.603  nf_pt1+g2f 0.638  nf_pt1@16 0.764
+  nf_pt1 32-grid class repair units  106: nf_pt1@32 0.472  nf_pt1+g2f 0.575  nf_pt1@16 0.755
+  nf_pt1 32-grid class fixed  units    5: nf_pt1@32 1.000  nf_pt1+g2f 0.800  nf_pt1@16 1.000
