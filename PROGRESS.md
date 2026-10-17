@@ -231,3 +231,6 @@ redirect (claude.com/app-unavailable-in-region). Prior numpy synthetic scripts a
   （results/recompute_dev_independent.log，8 个臂全部一致），作为审查方离线期间的自检。
 - 恢复点：审查方回来后复核变体与 E4（2d1e27f、ac44080、2571fc3）；用户醒来后汇报：TWIN-GRID 在等内存下不如细网格、Quest 远强于矩摘要，
   项目价值收窄为“块长三效应 + 切分度量”；是否继续把集群主比较作为头条，由用户决定。
+- 03:4x 已推送：公开仓库 github.com/Koooki3/TWIN-GRID 的 main = 快照 dc22980（来自本地 e644c87；去掉 runs/ruler/ 共 275 个文件，加入 PROVENANCE.md；作者 noreply）。
+  推送前检查：check_all rc 0、check_delim / check_nbh ALL OK、冻结 13/13、快照树检查、公开内容扫描（无凭据/邮箱/长文本）；推送后在 clone 上冻结 13/13、check_all rc 0。
+  完整本地历史：/home/kooki3/archives/twin-grid/2026-10-17/twin-grid-local-e644c87.bundle。审查方离线：变体与 E4 由独立重算自检，待审查方复核；后续修正以快进推送（父节点 = 公开 main）。

@@ -128,6 +128,9 @@ python cluster/gain_law.py --out-root $OUT --model llama3.1-8b --length 16384 --
 - **PRIMARY / SECONDARY：** 只在主格上，且两个方法臂块长相同时给出。
 - **DESCRIPTIVE：** 其余情况，只给估计值和区间，不给 p 值。
 
+**v1.4 附录（描述性）**：主格上的 mean、mean+g2f、delim_cobs 对照见 docs/PLAN_V14_APPENDIX_ZH.md（`cluster/make_appendix_jobs.py` 生成作业，
+`cluster/aggregate_appendix.py` 汇总，全部 DESCRIPTIVE），在主作业的数据准备之后运行。
+
 逐任务结果、P-cov 分组、`gain_law.py` 的 κ / R̂ / P-asym 都只作描述（登记的描述性预测，计划 §3.4）。`--run-tag` 对应作业生成器的
 输出目录标签 `t<层>_n<样本数>`。所有对比按同一张表报告：读取 token、摘要量、π、G、R、Δ。
 

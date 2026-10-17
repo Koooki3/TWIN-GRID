@@ -1,12 +1,15 @@
 # Provenance of this public snapshot
 
-This repository is a snapshot of the local development branch at commit `e644c8749c91cdf42ba521c80a3eca5e0343aa14`, with `runs/ruler/` omitted
+This repository is a snapshot of the local development branch at commit `0f29fe5ea82b3205735e6de5ec5187989b7f78d2`, with `runs/ruler/` omitted
 (RULER-prepared inputs and prediction files containing third-party text; regenerate with `scripts/ruler_prepare.sh`).
 Commit ids cited in the documents refer to the local history below; the full history is archived locally as a git
 bundle. Frozen files are verified by sha256 (`results/freeze_v14_sha256.txt`), independent of commit ids.
 
 | commit | date (+0800) | subject |
 |---|---|---|
+| 0f29fe5 | 2026-10-17 13:01:35 | README: compress the repeated development-results paragraph into a pointer to appendix A4 (reviewer batch 12) |
+| 52d4244 | 2026-10-17 12:58:58 | Reviewer batch 11: README first screen (summary type dominates; TWIN-GRID partial fix at fixed B; finer grid better at equal memory; TWIN-GRID not recommended); v1.4 appendix jobs and aggregation (mean, mean+g2f, delim_cobs; descriptive only, frozen files untouched, check_appendix); E4 wording quantified; scenarios must-report summary-type comparison; check_all includes appendix/delim/nbh checks |
+| dc2e08c | 2026-10-17 03:21:38 | PROGRESS: public push record (dc22980) |
 | e644c87 | 2026-10-17 03:19:53 | PROGRESS: overnight results and resume point |
 | 2571fc3 | 2026-10-17 03:19:39 | E4 interpretation in README and appendix 8.5 (unit-fraction effect, not selectable positions); independent stdlib recompute of headline dev numbers (all match) |
 | ac44080 | 2026-10-17 03:19:04 | Box-summary P-grid (E4, exploratory): quest32+g2f vs quest16 close (-0.024 [-0.059,+0.009]; 4-target -0.013 [-0.062,+0.037]) -> by the pre-committed rule the moment-summary P-grid gap is the unit-fraction effect, not selectable positions; quest16 best overall (0.888) |

@@ -4,7 +4,8 @@
 WT=$(cd "$(dirname "$0")/.." && pwd)
 PY=${1:-python}
 rc_all=0
-for t in check_cluster_aggregate check_gain_law check_g3_layout check_invariant check_model_identity; do
+for t in check_cluster_aggregate check_gain_law check_g3_layout check_invariant check_model_identity check_appendix \
+         check_delim check_nbh; do
   out=$($PY "$WT/theory/$t.py" 2>&1); rc=$?
   echo "$t rc=$rc: $(echo "$out" | tail -1)"
   [ $rc -ne 0 ] && rc_all=1
