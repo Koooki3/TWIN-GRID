@@ -1,12 +1,15 @@
 # Provenance of this public snapshot
 
-This repository is a snapshot of the local development branch at commit `1813a9007e93f1bb2a747f9ce5dad7924194e4c5`, with `runs/ruler/` omitted
+This repository is a snapshot of the local development branch at commit `f9abcb1d2d994249c111d4eb432caaa891cd9918`, with `runs/ruler/` omitted
 (RULER-prepared inputs and prediction files containing third-party text; regenerate with `scripts/ruler_prepare.sh`).
 Commit ids cited in the documents refer to the local history below; the full history is archived locally as a git
 bundle. Frozen files are verified by sha256 (`results/freeze_v14_sha256.txt`), independent of commit ids.
 
 | commit | date (+0800) | subject |
 |---|---|---|
+| f9abcb1 | 2026-10-19 13:17:41 | Reviewer batch 16 (post-hoc re-check passed): K1 planning risk (power estimated at budget 512, primary cell 1024; 1.5B R7 shows 20-33% smaller effects) noted in the unfrozen cluster guide v2; K2 README credits the reviewer re-check; frozen files unchanged |
+| c2caca3 | 2026-10-19 13:11:11 | PROGRESS: user removed Codex from review; peers notified; queued a1 request withdrawn |
+| 7c88f51 | 2026-10-19 13:09:35 | PROGRESS: amended snapshot ff7996c pushed; only the 1813a90 bundle kept |
 | 1813a90 | 2026-10-19 13:06:39 | Pre-prediction freeze amendment a1 (Codex freeze review F1-F3): acceptance data = held-out rows 200..204 of the primary frozen file via accept-data, prompt-disjoint from main/calibration rows (checked at accept-data and register; same-prompt/other-primary negatives); scoped section 0 claims; power and reporting wording; freeze hashes recomputed, original list kept |
 | 0a73a28 | 2026-10-19 12:59:20 | PROGRESS: post-push local storage cleanup (git gc 489M->44M, superseded bundles, pycache, pip cache, temp outputs); raw results, evidence, venv, models and shared caches kept |
 | a97164e | 2026-10-19 12:55:45 | PROGRESS: public snapshot 8ab70c1 (v2 frozen) pushed |

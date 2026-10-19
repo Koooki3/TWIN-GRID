@@ -348,3 +348,6 @@ redirect (claude.com/app-unavailable-in-region). Prior numpy synthetic scripts a
     原写法会重复主样本前 5 行，但从未执行过，所以没有任何主样本被提前看到。
   - F2、F3：措辞收窄与改正（§0、§4、RESULT_SCENARIOS_V2）。
   - 冻结哈希重算；旧清单保存为 results/freeze_v2_sha256_29b882e.txt。端到端测试 75 项（新增：同提示不同文件哈希、来自另一份主数据，均拒绝），统计测试 36 项，check_all rc_all=0。
+- 公开仓库快进推送修订版：main 8ab70c1 → ff7996c（来自本地 1813a90）；推送前内容扫描干净，v2 冻结文件 20/20、v1.4 13/13 在快照上一致；推送后在克隆上 check_all rc_all=0。历史 bundle 只保留 twin-grid-local-1813a90.bundle（已验证完整；29b882e 是其祖先，旧 bundle 已删）。集群上应使用 ff7996c（含冻结修订 a1）。
+- 2026-10-19 用户决定：Codex 不再参与复核。已通知 TWIN-GRID 监督总管（今后由它负责复核，并告知 a1 目前没有第三方复核）、RECAP 项目总管与 RECAP 监督总管；已给 Codex 发消息撤回 a1 复核请求，并请它不再写入复核文件。已有的 Codex 复核记录全部保留在 /home/kooki3/docs/projects/twin-recap-audit/2026-10-18/。
+- 2026-10-19 TWIN-GRID 监督总管（会话恢复）事后复核 rep2 最终判定、v2 冻结与 a1（findings.md 批次 16），全部通过，判定 a1 正确、范围恰当。处理：K1 的规划风险（功效按预算 512 估算、主格是 1024；1.5B 的 R7 数据显示效应缩小约 20–33%，H2 没有 1024 数据）写入未冻结的 docs/CLUSTER_GUIDE_V2_ZH.md §5.1，注明是 1.5B 的事后描述、不是对 8B 的预测；K2 在 README 结论标题补写“并经 Claude 审查方事后复核（批次 16）”。冻结文件 20/20 不变。
