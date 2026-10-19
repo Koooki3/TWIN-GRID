@@ -56,7 +56,7 @@
         "calibration_arms": ["cobs", "cobs+g2f", "mean", "mean+g2f"],
         "auxiliary_note": "everything outside the primary cell is descriptive"}
  },
- "acceptance": {"rows_per_task": 5, "order_task": "cwe", "order_local": 16, "pairs": [["cobs", "cobs+g2f"], ["quest", "quest+g2f"]],
-                "note": "adapter acceptance on its own small frozen data set (every task, 5 rows); layout of cluster/accept_adapter.py; cluster/v2_run_descriptor.py accept-receipt binds report, verdict, tie diagnostics, inputs and full model/code hashes right after it"},
+ "acceptance": {"rows_per_task": 5, "rows": [200, 204], "source": "held-out rows 200..204 of the primary frozen file (beyond main 0..99 and calibration 100..199; Codex F1)", "order_task": "cwe", "order_local": 16, "pairs": [["cobs", "cobs+g2f"], ["quest", "quest+g2f"]],
+                "note": "adapter acceptance on held-out rows of the primary frozen file (every task, 5 rows, prompt-disjoint from research rows, checked at accept-data and register); layout of cluster/accept_adapter.py; cluster/v2_run_descriptor.py accept-receipt binds report, verdict, tie diagnostics, inputs and full model/code hashes right after it"},
  "tier_selection": "by the pre-run memory probe (cluster/probe_memory.py, >= 10% headroom on the actual device) and ACCEPTED adapter acceptance only, both checked by v2_run_descriptor.py register, whose descriptor is the structured tier record (its sha256 goes into plan section 8) before any primary-cell prediction; OOM after predictions start -> cell incomplete, no tier switch"
 }

@@ -96,7 +96,7 @@ GOOD_TIE = dict(input_equal=True, divergence_step=3, ref_logits=[18.75, 18.5], m
 
 def acceptance(root, mdir, verdict=None, report_mut=None, ties=(), tie_mut=None, acc_code_mut=None, garbage=False,
                layout_mut=None, receipt=True, pre_existing_report=False, during_eval=None, after_eval=None,
-               watch_report=None, watch_diag=None, watch_verdict=None):
+               watch_report=None, watch_diag=None, watch_verdict=None, data_mut=None):
     """A structurally complete acceptance in the cluster/accept_adapter.py layout on its own 5-row data set (every
     task): dense/ for every task, order_ab / order_ba / single runs for both pairs on the order task; the report rows
     carry the dense run's uids; `ties` = list of (task, row) made mismatches with full tie diagnostics (tie_mut may
@@ -105,15 +105,14 @@ def acceptance(root, mdir, verdict=None, report_mut=None, ties=(), tie_mut=None,
     data = os.path.join(acc, "data")
     pred = os.path.join(acc, "pred")
     os.makedirs(acc, exist_ok=True)
-    outs = {}
-    for t in PLAN["tasks"]:
-        os.makedirs(os.path.join(data, t), exist_ok=True)
-        f = os.path.join(data, t, "validation.jsonl")
-        open(f, "w").write("".join(json.dumps(dict(index=i, input=f"acc {t} {i}", answer_prefix="", outputs=["a"])) + "\n"
-                                   for i in range(5)))
-        h = hashlib.sha256(open(f, "rb").read()).hexdigest()
-        outs[t] = dict(sha256=h, sample_uids=[f"{h[:16]}:{t}:{i}" for i in range(5)])
-    json.dump(dict(ruler_commit=PLAN["ruler_commit"], outputs=outs), open(os.path.join(data, "prep_manifest.json"), "w"))
+    # acceptance data = held-out rows 200..204 of the primary frozen file (Codex F1), via accept-data
+    main = os.path.join(root, "data", M, str(PC["length"]))
+    r_ad = subprocess.run([PY, ROOT + "/cluster/v2_run_descriptor.py", "accept-data", "--main-data", main, "--out", data],
+                          capture_output=True, text=True)
+    assert r_ad.returncode == 0, r_ad.stdout + r_ad.stderr
+    if data_mut:
+        data_mut(root, data)
+    outs = json.load(open(os.path.join(data, "prep_manifest.json")))["outputs"]
     code = model_ids(mdir)
     if acc_code_mut:
         acc_code_mut(code)
@@ -251,10 +250,10 @@ def build_data(root, unit_mut=None):
     for t in PLAN["tasks"]:
         os.makedirs(os.path.join(data, t), exist_ok=True)
         f = os.path.join(data, t, "validation.jsonl")
-        lines = [dict(index=i, input=f"ctx {t} {i}", answer_prefix=" Answer:", outputs=["alpha"], length=10) for i in range(200)]
+        lines = [dict(index=i, input=f"ctx {t} {i}", answer_prefix=" Answer:", outputs=["alpha"], length=10) for i in range(205)]
         open(f, "w").write("".join(json.dumps(x) + "\n" for x in lines))
         h = hashlib.sha256(open(f, "rb").read()).hexdigest()
-        outs[t] = dict(sha256=h, sample_uids=[f"{h[:16]}:{t}:{i}" for i in range(200)], lines=lines)
+        outs[t] = dict(sha256=h, sample_uids=[f"{h[:16]}:{t}:{i}" for i in range(205)], lines=lines)
     json.dump(dict(ruler_commit=PLAN["ruler_commit"], outputs={t: {k: v for k, v in o.items() if k != "lines"}
                                                               for t, o in outs.items()}),
               open(os.path.join(data, "prep_manifest.json"), "w"))
@@ -466,6 +465,27 @@ def foreign_uid(rep):
     rep["steps"]["same_input:niah_single_2"]["rows"][0]["uid"] = "0" * 16 + ":niah_single_2:0"
 
 
+def acc_prompt_from_main(root, data):
+    """Same prompt as research row 3 in the acceptance file (different file hash / uid): must be refused (F1)."""
+    main = [json.loads(x) for x in open(os.path.join(root, "data", M, str(PC["length"]), "vt", "validation.jsonl"))]
+    f = os.path.join(data, "vt", "validation.jsonl")
+    rows = [json.loads(x) for x in open(f)]
+    rows[0] = dict(main[3], index=999)
+    open(f, "w").write("".join(json.dumps(r) + "\n" for r in rows))
+    pm = os.path.join(data, "prep_manifest.json")
+    m = json.load(open(pm))
+    h = hashlib.sha256(open(f, "rb").read()).hexdigest()
+    m["outputs"]["vt"] = dict(sha256=h, sample_uids=[f"{h[:16]}:vt:{i}" for i in range(len(rows))])
+    json.dump(m, open(pm, "w"))
+
+
+def acc_other_primary(root, data):
+    pm = os.path.join(data, "prep_manifest.json")
+    m = json.load(open(pm))
+    m["derived_from"]["prep_manifest_sha256"] = "0" * 64
+    json.dump(m, open(pm, "w"))
+
+
 def _edit_rows(p, fn):
     rows = [json.loads(x) for x in open(p)]
     for r in rows:
@@ -574,6 +594,10 @@ REFUSALS = (
     ("report replaced after its evaluation", {}, dict(acc_kw=dict(after_eval=rewrite_report)), "changed after its evaluation"),
     ("inputs changed after the receipt and accept-receipt re-run", {}, dict(after_receipts=change_and_rereceipt),
      "changed or missing since the receipt"),
+    ("acceptance prompt equals a research prompt (different file hash / uid)", {},
+     dict(acc_kw=dict(data_mut=acc_prompt_from_main)), "equals a research prompt"),
+    ("acceptance data derived from another primary data set", {}, dict(acc_kw=dict(data_mut=acc_other_primary)),
+     "not the registered held-out rows"),
     ("control: full watch, dense/vt prediction changed after the evaluation", {}, dict(acc_kw=dict(after_eval=change_dense_vt)),
      "differs from its evaluation snapshot"),
     ("report evaluation watched data only, dense/vt changed afterwards", {},

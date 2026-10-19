@@ -12,7 +12,7 @@
 | 统计（src/v2_stats.py）、门控与汇总（cluster/aggregate_v2.py）、运行描述（cluster/v2_run_descriptor.py）、作业生成器（cluster/make_jobs_v2.py） | CPU 合成测试通过（统计 36 项、端到端 73 项），Codex 独立复核 I1–I5 全部关闭 |
 | 显存是否够用 | **运行时验证**：prep 阶段的探测与收据，余量不足时 register 拒绝 |
 | 8B tokenizer 下的单元类别（含 UUID 任务） | **运行时验证**：prep 阶段冻结 n = 200 的单元文件 |
-| 适配器在 8B 上的验收 | **运行时验证**：prep 阶段在独立的 5 行/任务数据上做，结论必须是 ACCEPTED 或 ACCEPTED_WITH_TIES |
+| 适配器在 8B 上的验收 | **运行时验证**：prep 阶段在主冻结文件的保留行 200..204 上做（每任务 5 行，按内容与主样本、校准样本不重叠），结论必须是 ACCEPTED 或 ACCEPTED_WITH_TIES |
 
 ## 1. 环境、模型与 RULER
 
@@ -45,7 +45,7 @@ prep.sh 依次完成（任何一步失败都会停下）：
 1. 每个长度：准备 500 条/任务并冻结（准备清单记录配置与文件哈希）；用该模型自己的 tokenizer 写 n = 200 的单元文件 `unit_lengths_b32_n200.json`。
 2. 主格长度下，每种块长（8、16、32）运行显存探测，并立刻写探测收据（完整权重哈希、代码与参数）。
 3. 适配验收：
-   - 准备独立的 5 行/任务验收数据；
+   - `accept-data` 从主冻结文件逐字取出每个任务的保留行 200..204 作为验收数据（不在主样本 0..99 与校准样本 100..199 中，按内容检查不重叠，不计入任何研究分母）；
    - 跑 13 个任务的 dense，以及 cwe 上两组同族方法（cobs/cobs+g2f、quest/quest+g2f）的 ab、ba、single 运行（`--local 16`）；
    - 经 `eval-run` 运行 accept_adapter.py 生成报告；
    - `tie-plan` 列出每条不一致的输出，逐条经 `eval-run` 运行 accept_tie_diag.py；

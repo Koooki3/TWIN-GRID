@@ -1,12 +1,15 @@
 # Provenance of this public snapshot
 
-This repository is a snapshot of the local development branch at commit `29b882e5f10bf31ed5094fe54cd6039241f5d40b`, with `runs/ruler/` omitted
+This repository is a snapshot of the local development branch at commit `1813a9007e93f1bb2a747f9ce5dad7924194e4c5`, with `runs/ruler/` omitted
 (RULER-prepared inputs and prediction files containing third-party text; regenerate with `scripts/ruler_prepare.sh`).
 Commit ids cited in the documents refer to the local history below; the full history is archived locally as a git
 bundle. Frozen files are verified by sha256 (`results/freeze_v14_sha256.txt`), independent of commit ids.
 
 | commit | date (+0800) | subject |
 |---|---|---|
+| 1813a90 | 2026-10-19 13:06:39 | Pre-prediction freeze amendment a1 (Codex freeze review F1-F3): acceptance data = held-out rows 200..204 of the primary frozen file via accept-data, prompt-disjoint from main/calibration rows (checked at accept-data and register; same-prompt/other-primary negatives); scoped section 0 claims; power and reporting wording; freeze hashes recomputed, original list kept |
+| 0a73a28 | 2026-10-19 12:59:20 | PROGRESS: post-push local storage cleanup (git gc 489M->44M, superseded bundles, pycache, pip cache, temp outputs); raw results, evidence, venv, models and shared caches kept |
+| a97164e | 2026-10-19 12:55:45 | PROGRESS: public snapshot 8ab70c1 (v2 frozen) pushed |
 | 29b882e | 2026-10-19 12:51:04 | Freeze plan v2 for the cluster (user decision 2026-10-19): polished cognitive value (who it serves, three falsifiable design conclusions), acceptance order task cwe with --local 16, full acceptance flow in prep (data, dense/order runs, eval-run report, tie-plan, diagnostics, verdict, receipt), pre-specified result narratives (RESULT_SCENARIOS_V2), cluster guide v2, selection record outside the frozen file, plan_v2.json FROZEN, freeze hashes (20 files); 73 end-to-end checks |
 | 09f6826 | 2026-10-19 11:27:26 | PROGRESS: public snapshot b0264da pushed (fast-forward) |
 | e868ed5 | 2026-10-19 11:25:00 | PROGRESS: Codex closure of the v2 implementation review (I1-I5) at 297db75; not a freeze or run authorisation |

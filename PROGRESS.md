@@ -330,3 +330,21 @@ redirect (claude.com/app-unavailable-in-region). Prior numpy synthetic scripts a
 - 测试：统计 36 项、端到端 73 项全部通过（新增 tie-plan 测试，测试中的 RULER 路径可由 RULER_ROOT 指定）；check_all rc_all=0。
 - 收尾：rep2 的数据准备日志入库；work-handoff 中本项目没有未结束的作业；GPU 空闲（已告知 RECAP）。
 - 恢复点：集群上按 docs/CLUSTER_GUIDE_V2_ZH.md 执行；结果回来后按 RESULT_SCENARIOS_V2_ZH.md 解读，交审查方与 Codex 复核。
+- 公开仓库快进推送：main b0264da → 8ab70c1（来自本地 29b882e）。推送前检查：内容扫描干净，v2 冻结文件 20/20、v1.4 冻结文件 13/13 在快照上一致；推送后在克隆上 check_all rc_all=0。
+- 2026-10-19 推送后的本地存储清理（用户：“推送更新到远程 github 仓库后可以完整清理一下本地存储，把冗余/过期/缓存的文件等都删除”）。日志：results/cleanup_20261019.log。
+  - 已删除或压缩：
+    - git gc 把 2105 个松散对象（487 MiB）打包为 43 MiB，.git 从 489M 降到 44M；fsck --connectivity-only rc 0，所有可达历史不变；
+    - 3 个被取代的历史 bundle（e644c87、0f29fe5、e868ed5；它们的 HEAD 已验证都是 29b882e 的祖先），只保留 twin-grid-local-29b882e.bundle（完整历史），存档从 113M 降到 44M；
+    - 382 个 __pycache__ 目录（约 70M，可重建）；pip 下载缓存（85.2 MB）；本会话 /tmp 下的后台任务输出（1.6M）；
+    - 作业临时目录（45M：临时脚本、测试夹具，以及已过期的 v1.4 功效复现输入 llama31_tok、unitdev_*，其结论已在 results/ 中）。
+  - 保留及原因：
+    - runs/（2.1G：实验原始结果，含 gitignore 的机制诊断原始数据 mech_full/mech_check，只能用 GPU 重跑）；
+    - results、docs 与代码（冻结、登记与审查证据）；.venv（6.8G，CPU 检查需要）；
+    - 模型（qwen2.5-1.5b，rep2 复现需要；pythia 属于其他项目）；RULER 源码（测试需要）；work-handoff 日志；
+    - 共享的 ~/.cache/uv、huggingface、playwright（其他项目可能在用，未动）；/tmp 下 bash-edit-diff（工具链共享，未动）。
+  - 清理后检查：check_all rc_all=0；冻结文件 v2 20/20、v1.4 13/13 一致。
+- 2026-10-19 Codex 冻结复核（v2-freeze-review-29b882e）：哈希一致，复跑通过；但要求在预测前修订。已在任何 v2 prep 或预测之前完成冻结修订 a1：
+  - F1：验收数据改为主冻结文件的保留行 200..204（accept-data），在生成与 register 时都按 input + answer_prefix 检查与主样本、校准样本不重叠，并核对派生来源。
+    原写法会重复主样本前 5 行，但从未执行过，所以没有任何主样本被提前看到。
+  - F2、F3：措辞收窄与改正（§0、§4、RESULT_SCENARIOS_V2）。
+  - 冻结哈希重算；旧清单保存为 results/freeze_v2_sha256_29b882e.txt。端到端测试 75 项（新增：同提示不同文件哈希、来自另一份主数据，均拒绝），统计测试 36 项，check_all rc_all=0。

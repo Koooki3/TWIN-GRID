@@ -1,0 +1,33 @@
+== 2026-10-19 12:57:08 before
+/dev/sdd       1007G   60G  897G   7% /
+489M	/home/kooki3/projects/dual-channel-attention/.git
+113M	/home/kooki3/archives/twin-grid/2026-10-17
+45M	/home/kooki3/.claude/jobs/a0424013/tmp
+1.6M	/tmp/claude-1000/-home-kooki3-projects-dual-channel-attention--claude-worktrees-stage1-analysis
+84M	/home/kooki3/.cache/pip
+__pycache__: 382 dirs, 71400K
+== 1. __pycache__ (rebuildable)
+== 2. superseded history bundles (heads are ancestors of the kept 29b882e bundle, verified)
+removed '/home/kooki3/archives/twin-grid/2026-10-17/twin-grid-local-e644c87.bundle'
+removed '/home/kooki3/archives/twin-grid/2026-10-17/twin-grid-local-0f29fe5.bundle'
+removed '/home/kooki3/archives/twin-grid/2026-10-17/twin-grid-local-e868ed5.bundle'
+== 3. this session's background-task outputs under /tmp
+== 4. pip download cache
+/home/kooki3/projects/dual-channel-attention/.venv/bin/python: No module named pip
+== 5. git gc (pack loose objects; reachable history unchanged)
+warning: garbage found: /home/kooki3/projects/dual-channel-attention/.git/worktrees/stage1-analysis/refs
+count: 2105
+size: 486.83 MiB
+size-pack: 0 bytes
+warning: garbage found: /home/kooki3/projects/dual-channel-attention/.git/worktrees/stage1-analysis/refs
+count: 0
+size: 0 bytes
+size-pack: 42.88 MiB
+dangling commit 9757b9c9c520b1b1a5748f4616eeab8f94a1cdb1
+dangling commit 457a3a31ce503ff31f90274ea86fc06ceb3c661a
+fsck rc=0
+== after
+/dev/sdd       1007G   59G  897G   7% /
+44M	/home/kooki3/projects/dual-channel-attention/.git
+44M	/home/kooki3/archives/twin-grid/2026-10-17
+84M	/home/kooki3/.cache/pip

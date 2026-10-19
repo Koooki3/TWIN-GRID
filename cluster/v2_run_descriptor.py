@@ -413,6 +413,81 @@ def order_problems(pred_root, order_task, budget, rep):
     return bad
 
 
+def prompt_sha(line):
+    return hashlib.sha256((line["input"] + line.get("answer_prefix", "")).encode()).hexdigest()
+
+
+def research_prompts(main_dir, plan, task):
+    """Content identity of the research rows (main 0..99 and calibration 100..199) of one task."""
+    lines = [json.loads(x) for x in open(os.path.join(main_dir, task, "validation.jsonl"))]
+    lo, hi = plan["rows"]["main"][0], plan["rows"]["calibration"][1]
+    return {prompt_sha(x) for x in lines[lo:hi + 1]}, lines
+
+
+def accept_data(a):
+    """Build the acceptance data set from HELD-OUT rows of the primary frozen file (Codex F1): plan acceptance.rows
+    (200..204), verbatim, beyond main 0..99 and calibration 100..199. A separate ruler_prepare.sh call with the same
+    tokenizer / template / length and RULER's default seed would repeat the primary prefix (rows 0..4). Refuses if
+    any acceptance prompt (input + answer_prefix) equals a research prompt. Writes <out>/<task>/validation.jsonl and a
+    derived prep_manifest.json (sha256 + full uid list, as cluster/accept_adapter.py requires, plus the source)."""
+    plan = json.load(open(PLAN2_PATH))
+    lo, hi = plan["acceptance"]["rows"]
+    main_prep_p = os.path.join(a.main_data, "prep_manifest.json")
+    main_prep = json.load(open(main_prep_p))
+    outs, bad = {}, []
+    for t in plan["tasks"]:
+        research, lines = research_prompts(a.main_data, plan, t)
+        if sha(os.path.join(a.main_data, t, "validation.jsonl")) != main_prep["outputs"][t]["sha256"]:
+            bad.append(f"{t}: primary frozen file differs from its prep manifest")
+            continue
+        if len(lines) <= hi:
+            bad.append(f"{t}: primary file has {len(lines)} lines, held-out rows {lo}..{hi} not available")
+            continue
+        rows = lines[lo:hi + 1]
+        if any(prompt_sha(x) in research for x in rows):
+            bad.append(f"{t}: a held-out acceptance prompt equals a research prompt")
+            continue
+        os.makedirs(os.path.join(a.out, t), exist_ok=True)
+        f = os.path.join(a.out, t, "validation.jsonl")
+        open(f, "w").write("".join(json.dumps(x) + "\n" for x in rows))
+        h = sha(f)
+        outs[t] = dict(sha256=h, sample_uids=[f"{h[:16]}:{t}:{i}" for i in range(len(rows))])
+    if bad:
+        print("ACCEPT-DATA REFUSED:", *bad, sep="\n  ")
+        sys.exit(1)
+    json.dump(dict(ruler_commit=main_prep.get("ruler_commit"), outputs=outs,
+                   derived_from=dict(prep_manifest_sha256=sha(main_prep_p), rows=[lo, hi],
+                                     files={t: main_prep["outputs"][t]["sha256"] for t in plan["tasks"]})),
+              open(os.path.join(a.out, "prep_manifest.json"), "w"), indent=1, sort_keys=True)
+    print(f"acceptance data {a.out}: rows {lo}..{hi} of every task, disjoint from research rows")
+
+
+def acceptance_disjoint_problems(adata, main_dir, plan, main_prep_sha):
+    """Registration: the acceptance data must be the registered held-out rows of THIS primary data (derived_from)
+    and no acceptance prompt may equal a research prompt (content identity, not file hashes or uids)."""
+    bad = []
+    try:
+        ap = json.load(open(os.path.join(adata, "prep_manifest.json")))
+    except (OSError, ValueError):
+        return ["acceptance data prep manifest missing"]
+    d = ap.get("derived_from") or {}
+    if d.get("prep_manifest_sha256") != main_prep_sha or d.get("rows") != list(plan["acceptance"]["rows"]):
+        bad.append("acceptance data is not the registered held-out rows of the registered primary data")
+    for t in plan["tasks"]:
+        try:
+            research, lines = research_prompts(main_dir, plan, t)
+            acc = [json.loads(x) for x in open(os.path.join(adata, t, "validation.jsonl"))]
+        except (OSError, ValueError):
+            bad.append(f"{t}: acceptance or primary data unreadable")
+            continue
+        if any(prompt_sha(x) in research for x in acc):
+            bad.append(f"{t}: an acceptance prompt equals a research prompt (main / calibration rows)")
+        lo, hi = plan["acceptance"]["rows"]
+        if [prompt_sha(x) for x in acc] != [prompt_sha(x) for x in lines[lo:hi + 1]]:
+            bad.append(f"{t}: acceptance rows are not rows {lo}..{hi} of the primary file")
+    return bad
+
+
 def tie_plan(a):
     """Print one line per same-input mismatch of an acceptance report: k task line data_jsonl pred_jsonl max_new
     (the arguments of cluster/accept_tie_diag.py; max_new = the official tokens_to_generate of the task)."""
@@ -652,6 +727,8 @@ def register(a):
         bad += abad
         rbad = acceptance_receipt_problems(a, mdir, plan, None)
         bad += rbad
+        mp = os.path.join(data_dir, "prep_manifest.json")
+        bad += acceptance_disjoint_problems(a.adapter_data_dir, data_dir, plan, sha(mp) if os.path.exists(mp) else None)
         if rep is not None:                  # re-derive linkage and evidence now as well (also names the reason)
             _, ibad = acceptance_inputs(a.adapter_pred_root, a.adapter_data_dir, plan, plan["acceptance"]["order_task"],
                                         rep, mdir)
@@ -819,6 +896,9 @@ def main():
     for k in ("pred-root", "data-dir", "order-task", "report", "verdict", "model", "models-dir"):
         ar.add_argument(f"--{k}", required=True)
     ar.add_argument("--tie-diag", action="append", default=[])
+    ad = sub.add_parser("accept-data")
+    for k in ("main-data", "out"):
+        ad.add_argument(f"--{k}", required=True)
     tp = sub.add_parser("tie-plan")
     for k in ("report", "data-dir", "pred-root", "ruler"):
         tp.add_argument(f"--{k}", required=True)
@@ -835,7 +915,7 @@ def main():
     for k in ("rd", "save-dir", "task", "methods", "budget"):
         b.add_argument(f"--{k}", required=True)
     a = ap.parse_args()
-    {"register": register, "probe-receipt": probe_receipt, "accept-receipt": accept_receipt, "eval-run": eval_run, "tie-plan": tie_plan,
+    {"register": register, "probe-receipt": probe_receipt, "accept-receipt": accept_receipt, "eval-run": eval_run, "tie-plan": tie_plan, "accept-data": accept_data,
      "verify": verify,
      "bind": bind}[a.cmd](a)
 

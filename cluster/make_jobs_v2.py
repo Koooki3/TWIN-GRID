@@ -105,18 +105,16 @@ def main():
         pred_acc, rep_p, ver_p = os.path.join(acc, "pred_" + m), os.path.join(acc, m + ".report.json"), \
             os.path.join(acc, m + ".verdict.txt")
         ev = f"{desc} eval-run --model {m} --models-dir {q(a.models_dir)}"
-        envp = (f"RULER_ROOT={q(a.ruler_root)} RULER_TOKENIZER={mdir} RULER_TEMPLATE={model['template']} "
-                f"PROJECT_PY={py} CPU_SET=" + (f" RULER_VENV={q(a.ruler_venv)}" if a.ruler_venv else ""))
         apred = (f"{py} {ROOT}/src/ruler_pred.py --ruler {q(a.ruler_root)} --model {mdir} --data_dir {q(adata)} "
                  f"--budget {pc['budget']} --block 32 --layout-unit 32 --strict-budget --model-revision {a.revision}")
-        lines += [f"\n# ---- adapter acceptance (plan v1.4 §3.2, guide §5) on its own frozen data {adata} "
-                  f"({ac['rows_per_task']} rows per task, every task); order / cache-isolation runs on {ac['order_task']} "
+        lines += [f"\n# ---- adapter acceptance (plan v1.4 §3.2, guide §5) on held-out rows of the primary frozen file, copied to {adata} "
+                  f"(rows {ac['rows'][0]}..{ac['rows'][1]} of every task, prompt-disjoint from main / calibration rows); order / cache-isolation runs on {ac['order_task']} "
                   f"with --local {ac['order_local']} (generated tokens reach candidate blocks); predictions under "
                   f"{pred_acc}/ in the cluster/accept_adapter.py layout. Every evaluation runs through eval-run (inputs "
                   f"hashed before and after, output created by that run, provenance kept); an existing output is never "
                   f"overwritten: a new evaluation needs a new --out-root attempt.",
                   f"export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True",
-                  f"{envp} bash {ROOT}/scripts/ruler_prepare.sh {pc['length']} {ac['rows_per_task']} {q(adata)} || exit 1"]
+                  f"{desc} accept-data --main-data {q(pdata)} --out {q(adata)} || exit 1   # held-out rows {ac['rows'][0]}..{ac['rows'][1]} (F1)"]
         for t in plan["tasks"]:
             lines.append(f"{apred} --save_dir {q(os.path.join(pred_acc, 'dense'))} --task {t} --methods dense || exit 1")
         for x, y in ac["pairs"]:
