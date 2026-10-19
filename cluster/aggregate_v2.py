@@ -1,4 +1,4 @@
-"""Plan v2 aggregation for the primary (model, length, budget) cell (docs/PLAN_V2_COGNITIVE_ZH.md r2; DRAFT, not frozen).
+"""Plan v2 aggregation for the primary (model, length, budget) cell (docs/PLAN_V2_COGNITIVE_ZH.md, frozen 2026-10-19).
 Nothing is computed before the gate passes (exit 2 on any failure). Reuses the reviewed v1.4 checks of
 cluster/aggregate.py (imported, unchanged) and adds the v2 requirements.
 

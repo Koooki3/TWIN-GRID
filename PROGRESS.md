@@ -316,3 +316,17 @@ redirect (claude.com/app-unavailable-in-region). Prior numpy synthetic scripts a
 - Codex 复核 627c62d（v2-fix3-review-627c62d）：I2-b 关闭；I2-a.2 已修，另有零 logit 的兼容问题；I2-a.1 仍有阻断（顺序运行的预测与覆盖未核对，且收据可以被覆盖重写）。已修复：order_problems 按 accept_adapter 的方法，由绑定的行重新推出 identical 与 covered_rows，再与报告比对；收据不得覆盖（以 open 'x' 方式写入，已存在即拒绝）；新增 eval-run，在评价边界记录来源：评价前后输入哈希不变，输出由本次运行生成，并记录完整模型与代码哈希；报告、平局诊断、结论都必须带来源记录，accept-receipt 与 register 都会核对；prep 中的验收命令都经过 eval-run；ulp_bf16(0) = 2^-133，与冻结的生成程序一致。端到端测试 67 项（假评价程序，只用 CPU）、统计测试 36 项，全部通过；check_all rc_all=0；冻结 13/13。
 - Codex 复核 4ff254b（v2-fix4-review-4ff254b）：顺序证据、收据覆盖和零 logit 三项关闭；I2-a.1 剩“来源快照不要求必需输入”一处。已修复：evidence_problems 由验收布局独立推出各角色的必需输入（报告与平局诊断 = 全部验收运行的 manifest 与预测文件 + 验收数据；结论 = 报告 + 全部平局诊断），每份来源快照都必须包含全部必需键，且哈希与当前相同；布局推不出时拒绝。新增反例：报告评价只监视数据（不论之后有无改动）、平局诊断评价只监视数据、结论评价漏掉诊断——全部拒绝；完整监视后再改动的对照组也被拒绝。端到端测试 72 项、统计测试 36 项全部通过；check_all rc_all=0；冻结 13/13；只用 CPU。
 - 2026-10-19 Codex 复核闭环（v2-closure-297db75）：自 83e0d68 起的 I1–I5 实现问题全部关闭（独立复跑统计 36 项、端到端 72 项全部 OK，另加 7 个独立反例）。这只是实现层面的 CPU 合成验收，不代表模型结果，也不是冻结或运行授权；§4 的正式功效、真实显存、8B tokenizer / UUID 类别以及 §8 的记录，仍要等真实证据。用户未授权研究实验。
+- 2026-10-19 公开仓库快进推送：github.com/Koooki3/TWIN-GRID main 6129374 → b0264da（来自本地 e868ed5，去掉 runs/ruler/ 的 521 个文件，加入 PROVENANCE.md，作者使用 noreply 地址）。推送前：快照树与冻结文件检查通过，内容扫描未发现个人邮箱或凭据；推送后在克隆上冻结文件 13/13 一致，check_all rc_all=0。完整本地历史的 bundle 存档在 /home/kooki3/archives/twin-grid/2026-10-17/。
+
+## v2 冻结并交集群（2026-10-19）
+- 用户：“先做整理和收尾、然后 polish 认知层面价值和完善实验计划，然后推送更新，我会去集群做实验”。本机已没有要做的实验（rep2 已完成；v2 全部在集群上跑）。
+- 冻结前的最后修订（写入计划修订记录）：
+  - §0 补写“这对谁有用”与三条可证伪的操作性结论；
+  - 验收的顺序/缓存隔离任务定为 cwe、--local 16（与 v1.4 一致；原写的 niah_single_1 生成太短，覆盖可能为 0）；
+  - prep 阶段写全验收流程（验收数据、dense 与顺序运行、经 eval-run 的报告与平局诊断、tie-plan、结论、验收收据）；
+  - §4 改为运行时证据；§8 改为在 docs/PLAN_V2_SELECTION_RECORD_ZH.md 中填写，冻结计划保持字节不变。
+- 新增文档：docs/RESULT_SCENARIOS_V2_ZH.md（结果的预先叙述）、docs/CLUSTER_GUIDE_V2_ZH.md（运行指南）、docs/PLAN_V2_SELECTION_RECORD_ZH.md。
+- plan_v2.json 的 status 改为 FROZEN；冻结哈希写入 results/freeze_v2_sha256.txt（20 个文件），v1.4 的冻结文件 13/13 不变。
+- 测试：统计 36 项、端到端 73 项全部通过（新增 tie-plan 测试，测试中的 RULER 路径可由 RULER_ROOT 指定）；check_all rc_all=0。
+- 收尾：rep2 的数据准备日志入库；work-handoff 中本项目没有未结束的作业；GPU 空闲（已告知 RECAP）。
+- 恢复点：集群上按 docs/CLUSTER_GUIDE_V2_ZH.md 执行；结果回来后按 RESULT_SCENARIOS_V2_ZH.md 解读，交审查方与 Codex 复核。

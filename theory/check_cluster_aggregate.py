@@ -22,7 +22,7 @@ import tempfile
 
 ROOT = __file__.rsplit("/theory/", 1)[0]
 PLAN = json.load(open(ROOT + "/cluster/plan_v1.json"))
-RULER = "/home/kooki3/tools/sources/ruler"
+RULER = os.environ.get("RULER_ROOT", "/home/kooki3/tools/sources/ruler")
 PY = sys.executable
 N, K = 100, 30
 PC = PLAN["primary_cell"]

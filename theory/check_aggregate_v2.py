@@ -27,7 +27,7 @@ sys.path.insert(0, ROOT + "/cluster")
 import v2_run_descriptor as RD  # noqa: E402
 
 PLAN = json.load(open(ROOT + "/cluster/plan_v2.json"))
-RULER = "/home/kooki3/tools/sources/ruler"
+RULER = os.environ.get("RULER_ROOT", "/home/kooki3/tools/sources/ruler")
 PY = sys.executable
 PC = PLAN["primary_cell"]
 TIER, M = "3", PC["model"]
@@ -408,6 +408,12 @@ build_data(r0)
 rc, out = register(r0, acc_kw=dict(ties=[("vt", 2)]))
 check(rc == 0 and json.load(open(os.path.join(r0, "rd.json")))["adapter"]["verdict"] == "ACCEPTED_WITH_TIES",
       "register: valid supported tie case accepted (ACCEPTED_WITH_TIES re-derived)", out)
+tp = subprocess.run([PY, ROOT + "/cluster/v2_run_descriptor.py", "tie-plan", "--report", os.path.join(r0, "accept", "r.json"),
+                     "--data-dir", os.path.join(r0, "accept", "data"), "--pred-root", os.path.join(r0, "accept", "pred"),
+                     "--ruler", RULER], capture_output=True, text=True)
+tl = [x.split() for x in tp.stdout.splitlines()]
+check(tp.returncode == 0 and len(tl) == 1 and tl[0][1:3] == ["vt", "2"] and tl[0][5] == str(TC.TASKS[CFG["vt"]["task"]]["tokens_to_generate"]),
+      "tie-plan: one line for the vt mismatch (line 2, official max_new)", tp.stdout + tp.stderr)
 shutil.rmtree(r0)
 r0 = tempfile.mkdtemp(prefix="aggv2_", dir=os.environ.get("TMPDIR"))
 model_dir(r0)

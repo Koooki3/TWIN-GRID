@@ -1,12 +1,14 @@
 # Provenance of this public snapshot
 
-This repository is a snapshot of the local development branch at commit `e868ed5c1f0b15d27060303f688ba23fde9b5364`, with `runs/ruler/` omitted
+This repository is a snapshot of the local development branch at commit `29b882e5f10bf31ed5094fe54cd6039241f5d40b`, with `runs/ruler/` omitted
 (RULER-prepared inputs and prediction files containing third-party text; regenerate with `scripts/ruler_prepare.sh`).
 Commit ids cited in the documents refer to the local history below; the full history is archived locally as a git
 bundle. Frozen files are verified by sha256 (`results/freeze_v14_sha256.txt`), independent of commit ids.
 
 | commit | date (+0800) | subject |
 |---|---|---|
+| 29b882e | 2026-10-19 12:51:04 | Freeze plan v2 for the cluster (user decision 2026-10-19): polished cognitive value (who it serves, three falsifiable design conclusions), acceptance order task cwe with --local 16, full acceptance flow in prep (data, dense/order runs, eval-run report, tie-plan, diagnostics, verdict, receipt), pre-specified result narratives (RESULT_SCENARIOS_V2), cluster guide v2, selection record outside the frozen file, plan_v2.json FROZEN, freeze hashes (20 files); 73 end-to-end checks |
+| 09f6826 | 2026-10-19 11:27:26 | PROGRESS: public snapshot b0264da pushed (fast-forward) |
 | e868ed5 | 2026-10-19 11:25:00 | PROGRESS: Codex closure of the v2 implementation review (I1-I5) at 297db75; not a freeze or run authorisation |
 | 297db75 | 2026-10-19 11:22:23 | Codex I2-a.1 (provenance coverage): required inputs per role derived from the acceptance layout (report/tie diagnostics: every acceptance manifest and prediction file plus the acceptance data; verdict: report and every tie diagnostic); each provenance snapshot must contain all required keys with current hashes; 72 end-to-end checks |
 | 4ff254b | 2026-10-19 11:17:02 | Codex I2-a.1 / I2-a.2: order evidence re-derived from the bound rows (identical, covered_rows) and compared with the report; acceptance receipts never overwritten; eval-run evaluation-boundary provenance (inputs hashed before/after, output created by the run, full model/code) required for report, verdict and tie diagnostics; ulp_bf16(0) = 2^-133 as the frozen producer; 67 end-to-end checks with a fake evaluator |

@@ -413,6 +413,33 @@ def order_problems(pred_root, order_task, budget, rep):
     return bad
 
 
+def tie_plan(a):
+    """Print one line per same-input mismatch of an acceptance report: k task line data_jsonl pred_jsonl max_new
+    (the arguments of cluster/accept_tie_diag.py; max_new = the official tokens_to_generate of the task)."""
+    import importlib.util
+    import yaml
+    rep = json.load(open(a.report))
+    spec = importlib.util.spec_from_file_location("tc", os.path.join(a.ruler, "scripts", "data", "synthetic", "constants.py"))
+    tc = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(tc)
+    cfg = yaml.safe_load(open(os.path.join(a.ruler, "scripts", "synthetic.yaml")))
+    k = 0
+    for key, st in sorted((rep.get("steps") or {}).items()):
+        if not key.startswith("same_input:"):
+            continue
+        t = key.split(":", 1)[1]
+        man = json.load(open(os.path.join(a.pred_root, "dense", f"manifest.{t}.json")))
+        argv = man.get("argv") or []
+        bud = argv[argv.index("--budget") + 1]
+        for r in st.get("rows", []):
+            if not r.get("same_text") or r.get("score_ref") != r.get("score_ours"):
+                line = int(r["uid"].rsplit(":", 1)[1])
+                print(k, t, line, os.path.join(a.data_dir, t, "validation.jsonl"),
+                      os.path.join(a.pred_root, "dense", f"dense@{bud}", f"{t}.jsonl"),
+                      tc.TASKS[cfg[t]["task"]]["tokens_to_generate"])
+                k += 1
+
+
 def accept_receipt(a):
     """Written right after the adapter acceptance (prep): binds the report, verdict and tie diagnostics to the complete
     acceptance inputs, the full model content hashes and the code (Codex I2-a.1). Refuses on any problem."""
@@ -792,6 +819,9 @@ def main():
     for k in ("pred-root", "data-dir", "order-task", "report", "verdict", "model", "models-dir"):
         ar.add_argument(f"--{k}", required=True)
     ar.add_argument("--tie-diag", action="append", default=[])
+    tp = sub.add_parser("tie-plan")
+    for k in ("report", "data-dir", "pred-root", "ruler"):
+        tp.add_argument(f"--{k}", required=True)
     ev = sub.add_parser("eval-run")
     for k in ("out", "model", "models-dir"):
         ev.add_argument(f"--{k}", required=True)
@@ -805,7 +835,7 @@ def main():
     for k in ("rd", "save-dir", "task", "methods", "budget"):
         b.add_argument(f"--{k}", required=True)
     a = ap.parse_args()
-    {"register": register, "probe-receipt": probe_receipt, "accept-receipt": accept_receipt, "eval-run": eval_run,
+    {"register": register, "probe-receipt": probe_receipt, "accept-receipt": accept_receipt, "eval-run": eval_run, "tie-plan": tie_plan,
      "verify": verify,
      "bind": bind}[a.cmd](a)
 

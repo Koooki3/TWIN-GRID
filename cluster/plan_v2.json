@@ -1,6 +1,7 @@
 {
  "project": "TWIN-GRID plan v2 (cognitive; docs/PLAN_V2_COGNITIVE_ZH.md r2 is authoritative if they ever differ)",
- "status": "DRAFT for review: not frozen, NOT authorised to run",
+ "status": "FROZEN",
+ "status_note": "frozen 2026-10-19 after Codex closure of the design (r2) and implementation (I1-I5) reviews; the user decided to use cluster compute; hashes in results/freeze_v2_sha256.txt",
  "ruler_commit": "c3f5e3b4f87f97e048793bb510a3a6b19a46bf3a",
  "models": {
   "llama3.1-8b": {"hf_id": "meta-llama/Llama-3.1-8B-Instruct", "template": "meta-llama3"},
@@ -55,7 +56,7 @@
         "calibration_arms": ["cobs", "cobs+g2f", "mean", "mean+g2f"],
         "auxiliary_note": "everything outside the primary cell is descriptive"}
  },
- "acceptance": {"rows_per_task": 5, "order_task": "niah_single_1", "pairs": [["cobs", "cobs+g2f"], ["quest", "quest+g2f"]],
+ "acceptance": {"rows_per_task": 5, "order_task": "cwe", "order_local": 16, "pairs": [["cobs", "cobs+g2f"], ["quest", "quest+g2f"]],
                 "note": "adapter acceptance on its own small frozen data set (every task, 5 rows); layout of cluster/accept_adapter.py; cluster/v2_run_descriptor.py accept-receipt binds report, verdict, tie diagnostics, inputs and full model/code hashes right after it"},
  "tier_selection": "by the pre-run memory probe (cluster/probe_memory.py, >= 10% headroom on the actual device) and ACCEPTED adapter acceptance only, both checked by v2_run_descriptor.py register, whose descriptor is the structured tier record (its sha256 goes into plan section 8) before any primary-cell prediction; OOM after predictions start -> cell incomplete, no tier switch"
 }

@@ -27,8 +27,8 @@ TWIN-GRID 是推理时块稀疏注意力的一种候选块划分方式。它同�
 **边界**：box 摘要有效是 Quest 的结论；更细的块更好属常识方向；错开半块的布局在 NSA 压缩分支中已有（l = 32、d = 16，端到端训练；reports/related_work_verified_ZH.md）。
 本项目增加的是同一协议下的定量分解（切分惩罚 G、增益律）和一个负结果：在免训练块选择中，错位双网格在等内存下不如直接细分。没有做多重比较控制；不推广到其它模型、长度或任务。
 
-**下一步**：认识层面的三层计划 v2（docs/PLAN_V2_COGNITIVE_ZH.md）是**待评审草案**，检验这些结论在 8B 与官方 RULER 13 任务上是否成立，并在独立校准样本上检验增益律；
-是否使用集群算力由项目所有者决定。v1.4 计划（docs/EXPERIMENT_PLANS_ZH.md）保留冻结原样，不再执行其主比较。
+**下一步：v2 已冻结，交集群执行**（2026-10-19，用户决定使用集群算力）。认识层面的三层计划 docs/PLAN_V2_COGNITIVE_ZH.md 检验三件事：8B（Llama-3.1-8B-Instruct）上等内存的细网格是否仍胜过错位双网格（矩类 H1、box 类 H2）；矩类摘要的切分惩罚是否仍大于 box 类（H3）；以及只用单网格臂测得的 G 能否在独立校准样本上预测布局修复的收益（H4，探索性）。结果的措辞事先写定在 docs/RESULT_SCENARIOS_V2_ZH.md，运行步骤见 docs/CLUSTER_GUIDE_V2_ZH.md，冻结哈希在 results/freeze_v2_sha256.txt。
+v1.4 计划（docs/EXPERIMENT_PLANS_ZH.md）保留冻结原样，不再执行其主比较。
 
 完整记录：PROGRESS.md；判定日志 results/rep2_early.log、results/rep2_final.log、results/rep2_value.log；收据 results/rep2_final_receipts.txt；
 Codex 复核报告在审查目录（twin-review-70d0779.txt、twin-final-review-7d669b4.txt）。
@@ -66,7 +66,9 @@ nf_pt1+TWIN-GRID 280（93.3%）、nf_pt1 251（83.7%）、COBS 式 244（81.3%�
 | `src/phase2_*.py`、`theory/prereg_g2f_v3.md`、`theory/phase2_spec.json` | 预注册确认实验：冻结规格、门控、分析 |
 | `src/ruler_pred.py`、`src/ruler_prep_manifest.py`、`scripts/ruler_prepare.sh` | 官方 RULER 接入：数据准备清单、预测适配器 |
 | `cluster/` | 集群交付：`plan_v1.json`（机器可读计划）、`make_jobs.py`、`unit_lengths.py`、`aggregate.py`、`holm.py`、`gain_law.py`、`accept_adapter.py` |
-| `docs/PLAN_V2_COGNITIVE_ZH.md` | 认识层面三层计划 v2（待评审草案，未冻结） |
+| `docs/PLAN_V2_COGNITIVE_ZH.md` | 认识层面三层计划 v2（已冻结，2026-10-19） |
+| `docs/RESULT_SCENARIOS_V2_ZH.md`、`docs/CLUSTER_GUIDE_V2_ZH.md`、`docs/PLAN_V2_SELECTION_RECORD_ZH.md` | v2 结果的预先叙述、运行指南、§8 选择记录（运行时填写） |
+| `cluster/plan_v2.json`、`make_jobs_v2.py`、`v2_run_descriptor.py`、`aggregate_v2.py`、`src/v2_stats.py` | v2 机器计划、作业生成（prep / predict）、运行描述与收据、门控与汇总、统计 |
 | `docs/EXPERIMENT_PLANS_ZH.md` | v1.4 多层实验计划（冻结原样保留；主比较已被 rep2 结论取代，不再执行） |
 | `docs/VALUE_CRITERIA_ZH.md` | 价值判定口径（运行前写定） |
 | `src/rep2_analysis.py`、`src/rep2_value_analysis.py`、`src/rep2_gate.py` | rep2 新样本复现：登记分析、价值附录、完整性门控 |
@@ -78,7 +80,7 @@ nf_pt1+TWIN-GRID 280（93.3%）、nf_pt1 251（83.7%）、COBS 式 244（81.3%�
 
 ## 在集群上运行
 
-**当前没有获准的集群运行。** v1.4 的指南与组件保留供追溯；v2 冻结前须补齐其 §4 的实现缺口并经审查。先读 `docs/CLUSTER_GUIDE_ZH.md`，选层由集群上的 agent 判断。指南第 0 节列出了尚未验证的组件，下表是摘要：
+**v2 请按 `docs/CLUSTER_GUIDE_V2_ZH.md` 运行。** 下文与 `docs/CLUSTER_GUIDE_ZH.md` 是 v1.4 的流程，保留供追溯，不再执行。指南第 0 节列出了尚未验证的组件，下表是摘要：
 
 | 组件 | 状态 |
 |---|---|
