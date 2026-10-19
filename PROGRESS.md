@@ -234,3 +234,85 @@ redirect (claude.com/app-unavailable-in-region). Prior numpy synthetic scripts a
 - 03:4x 已推送：公开仓库 github.com/Koooki3/TWIN-GRID 的 main = 快照 dc22980（来自本地 e644c87；去掉 runs/ruler/ 共 275 个文件，加入 PROVENANCE.md；作者 noreply）。
   推送前检查：check_all rc 0、check_delim / check_nbh ALL OK、冻结 13/13、快照树检查、公开内容扫描（无凭据/邮箱/长文本）；推送后在 clone 上冻结 13/13、check_all rc 0。
   完整本地历史：/home/kooki3/archives/twin-grid/2026-10-17/twin-grid-local-e644c87.bundle。审查方离线：变体与 E4 由独立重算自检，待审查方复核；后续修正以快进推送（父节点 = 公开 main）。
+
+## RECAP GPU 窗口（方案 A；2026-10-17 23:58 → 2026-10-18 04:00）
+- 23:58 停止 queue_rep2.sh 与补跑链；当前作业 9ec0867d 经 work-handoff stop 记为 interrupted；GPU 释放（约 1.5 GB 为桌面）；check_jsonl_tail rc 0（全部可解析，无重复）。
+- 重启：RECAP 通知结束后，先 check_jsonl_tail，再用同一命令重启 queue_rep2.sh（同 vram-frac/throttle）及补跑→价值附录→补跑→门控链。
+- 03:56 RECAP 交还 GPU（无 RECAP 进程，681 MiB）；check_jsonl_tail rc 0；用 scripts/queue_rep2_resume.sh 重启（已开始的 (臂, 任务) 用 manifest 中记录的 0.6/0.3，其余全速 0.75/0），之后 R7、价值附录、门控依次进行。
+- 2026-10-18 11:5x 用户开始使用本机：停止全速队列，作业 5c7ce618 记为 interrupted；check_jsonl_tail rc 0；以 scripts/queue_rep2_resume_low.sh 重启（未开始的任务用 0.6/0.3；已开始的沿用 manifest 记录的参数）。已转告 RECAP。
+- 2026-10-18 13:2x 存储清理（Codex 转达用户授权）：删除作业临时目录中的 unitdev_qwen_16k（23 MB，与 runs/ruler/pgrid_qwen1.5b_16k 中 13 个 jsonl 与 prep_manifest 逐一哈希一致）以及 __pycache__（可重建），共约 24 MB。保留：runs/（原始实验结果与续跑依赖）、.venv、results/docs/代码（冻结/登记/审查证据）、archives 中的 bundle、llama31_tok 与 unitdev_llama_16k（功效估计复现所需）、git 对象（共享仓库内部）。共享 ~/.cache/uv 未动（磁盘约 7%，不紧张；已告知 RECAP，避免双方同时操作）。
+
+## rep2 预算 512 提前判定（2026-10-18 14:19，已登记规则 R1–R6；R7 待预算 1024）
+- scripts/rep2_early.sh final rc=0：门控 --b512-only 通过（63 个 jsonl = 9 臂 × 7 任务，每格 0..99 行齐全）；mean+g2f/niah_multikey_2 崩溃前 14/14、续跑 6/6 与第 1 轮一致；
+  8 个稀疏臂 0..19 行与第 1 轮逐条一致（140/140）；防偷看断言成立（此刻 R7 的 5 个臂中仅 1 个有 b1024 输出）。日志 results/rep2_early.log，收据 results/rep2_b512_receipts.txt（列表哈希 57cfeae4…e4b1）。
+- 新样本（20..99 行，560 样本 / 1360 单元）：dense .956；cobs .535；cobs+g2f .593；mean .548；mean+g2f .622；quest32 .846；quest32+g2f .855；cobs16 .659；quest16 .890。
+- R1 cobs16 − cobs+g2f = +0.065 [+0.037, +0.096] 复现；R2 quest32 − mean+g2f = +0.224 [+0.196, +0.253] 复现；R3 G 顺序 mean > cobs > quest 完全复现；
+  R4 quest32+g2f − quest16 = −0.035，90% [−0.048, −0.022] 等价（但 95% [−0.050, −0.019] 不含 0：box 摘要上 TWIN-GRID 仍略低于细网格）；R5 两个 +g2f 增益复现；R6 pooled κ 1.060 [0.684, 1.600] 相符（受勘误 E1 限制，仅同样本描述性校准）。
+- 价值口径（docs/VALUE_CRITERIA_ZH.md）：A1 不成立（等内存下 TWIN-GRID 输给细网格，与开发结果同向）；C1 = R1 & R2 & R3 & R4 成立（认识层面结论在新样本上复现）；C2 相符（证据强度按 E1 降级）。
+- 偏差：未改规则；资源参数混用（0.6/0.3 与 0.75/0，只影响资源）已在日志逐格列出。
+- 下一步：队列继续 R7（b1024）→ 价值附录（em、quest16+g2f、quest8）→ 全门控 → R7、A4、A5 最终判定；提前判定已交审查方与 Codex 复核。
+- Codex 独立复核 70d0779（twin-review-70d0779.txt）：R1–R6 全部点估计和区间独立重算吻合，63 个哈希、UID 集合、冻结文件 13 个与登记文件 8 个、6300 行绑定、5600 个预算计数、8 臂 × 140 确定性均通过。
+  处理：T4 已修正——rep2_gate.py 的成功提示只列实际检查的范围（--b512-only 时写明 b1024 未检查、R7 未判定），检查逻辑未改；70d0779 的原始 rep2_early.log 保留原样。
+  报告口径：
+  - R4 的叫法是“登记的配对、按任务分层的 percentile-bootstrap 90% 区间落在 ±0.06 等价界限内”，不是另行做的经典参数 TOST，也没有 p 值；±6pp 等价不等于效果相等，同时报告 −3.5pp 差值及 95% 区间不含 0。
+  - 本批 out 类为 0，R_out 不可估计（日志中的 All-NaN 警告即由此而来），不能写成零效果。
+  - R6 quest 不确定；C2 遵守 E1。
+  - 全套没有做多重比较控制，不升级为集群确证。
+  - 来源边界：63 份 manifest 的 model revision 未记录，权重只有 size/mtime。已补 results/model_sha256_20261018.txt（当前内容哈希），只作为之后运行的佐证，不回填，也不证明历史权重身份。
+
+## RECAP GPU 窗口二（2026-10-19 00:5x；用户入睡）
+- 停止 queue_rep2_resume_low.sh；当前作业 6e73a78b 经 work-handoff stop 记为 interrupted（无残留 ruler_pred 进程）；GPU 1497 MiB（桌面）；check_jsonl_tail 通过（全部可解析、无重复）。
+  停止时 R7（b1024）已完成 1920/2100 行；价值附录尚未开始。已向 RECAP 发出“可以开始”（mpre 约 75 分钟）。
+- 恢复：RECAP 交还后，先跑 check_jsonl_tail，再用 scripts/queue_rep2_resume.sh 全速恢复（已开始的 (臂, 任务) 沿用 manifest 记录的参数，新任务用 0.75/0），依次跑完 R7、价值附录和全门控（--value）。
+- 03:57 RECAP 停止 mpre 并交还 GPU（作业 3c8aa151，01:40:41 启动，进度 5620/7456，剩余约 45 分钟改日续跑，届时先与 TWIN-GRID 确认）。
+  03:58 复核：无 run_rh05 / ruler_pred 进程，GPU 1330 MiB；check_jsonl_tail 通过。已用 scripts/queue_rep2_resume.sh 全速恢复（后台任务 bcjz1z6au）。
+
+## rep2 最终判定（2026-10-19 09:55；全门控 --value 通过；规则均为事先登记）
+- 队列 09:54:55 结束；全门控 rc 0（b512 rep2 0..99、b1024 0..59、价值附录 0..99）。rep2_final.sh（7b6e404，提交时门控尚未运行，也没有读过价值附录的任何输出）独立重跑门控 rc 0，
+  两个登记分析脚本 rc 0，R1..R7、A4、A5 的判定行齐全，final rc=0。日志：results/rep2_final.log、results/rep2_value.log、results/rep2_gate.log；
+  收据 results/rep2_final_receipts.txt（119 个 jsonl，列表哈希 9b11ef77…2947）；b512 rep2 的 63 个文件哈希仍为 57cfeae4…，与提前判定一致。
+- R1–R6 与提前判定相同（复现；R4 为登记的 bootstrap 90% 等价；R6 quest 不确定；R_out 不可估计）。
+- R7（b1024，样本 20..59，680 单元）：R1 点估计 +0.059（512 时 +0.065），R2 点估计 +0.097（512 时 +0.224），方向均一致。R2 的差距在预算翻倍后缩小一半以上（描述性）。
+- 价值附录（b512）：em .847、quest16 .890、quest16+g2f .888、quest8 .912。
+  A4 em − quest16 = −0.043 [−0.059, −0.027]（规则：下界 > −0.02）→ 不成立；
+  A5 quest16+g2f − quest8 = −0.024 [−0.035, −0.014]（等内存，规则：下界 > 0）→ 不成立；quest16+g2f − quest16 = −0.001 [−0.012, +0.010]（描述性）。
+- 价值口径汇总：
+  - A1、A4、A5 均不成立；A2/A3 的前提是实测真实 kernel 延迟，本项目未测，不能声称成立；B（速度）未知。所以不存在可声明的性能或内存收益。
+  - C1 成立（R1–R4 复现，R7 方向一致）；C2 相符，但按勘误 E1 仅为描述性证据。
+  - 认识层面的一致结论：在两类块摘要（矩类、box 类）上，同等内存下更细的网格都胜过 TWIN-GRID（cobs16 > cobs+g2f；quest16 > quest32+g2f；quest8 > quest16+g2f）；
+    摘要类型的差距远大于网格的差距；TWIN-GRID 只能部分修复被块边界切开的情况。
+- 偏差：资源参数混用（逐格列在 rep2_final.log 中）；RECAP 窗口二期间作业 6e73a78b 被中断后续跑；价值附录比预计慢约 2 小时，不影响计算。
+- 下一步：交 Codex 与审查方复核 → 按价值口径决定：不做性能类集群实验；是否设计认识层面的三层计划 v2，等用户决定 → 重写 README 与全部资料。
+- Codex 复核 7d669b4（twin-final-review-7d669b4.txt）通过：119 个哈希、UID、manifest 一致，全门控快照 rc 0，10500 行绑定、9800 个预算计数通过，R7/A4/A5 独立重算吻合。
+  - T5（低优先，本次未触发）已修正：rep2_final.sh 与 rep2_early.sh 在检查完判定行后，会把最终 rc 回写到 .rc 文件；scripts/check_t5_rc.sh 用末尾段落做故障注入测试，齐全时 0/0/0，缺行时 5/5/5。原始 log、.rc 与收据保持原样。
+  - 对外结论的限定：本次 Qwen2.5-1.5B、16k、7 个 RULER 任务、所测预算与配置下；B（速度）未知，不等于零收益；C1、C2 是描述性复现，C2 受 E1 限制；R7 只看方向，不是跨预算的显著性检验，也不代表 1024 达到 R2 的 0.15 门槛；没有做多重比较控制，不升级为集群确证。
+  - v2 只作为待评审材料；该复核不授权启动集群或新实验。v2 须写明可证伪的增量、数据分离、主比较与多重比较、停止规则，以及强模型身份。
+
+## 资料整理与 v2 草案（2026-10-19 上午）
+- README 首屏改为 rep2 的最终结论：方法价值不成立；认识层面复现；写明范围与边界，并给出全部方法的准确率。更早的预注册 C1–C3 保留，并注明是块长固定下的比较，不是等内存比较。
+- 各文档已更新：
+  - VALUE_CRITERIA 增加“判定结果”；THEORY_ADDENDUM 增加 §8.6（rep2）；
+  - RESULT_SCENARIOS、CLUSTER_GUIDE、PLAN_V14_APPENDIX 加了状态说明：v1.4 不再执行，当前没有获准的集群运行；
+  - 冻结的 13 个文件未改（13/13）；check_all rc_all=0。
+- 新增 docs/PLAN_V2_COGNITIVE_ZH.md（认识层面三层计划，**待评审草案**，未冻结、未授权运行）：
+  - Holm 三项：H1 cobs16 − cobs+g2f、H2 quest8 − quest16+g2f、H3 G_cobs − G_quest；
+  - H4：在独立校准样本（行 100..199）上做增益律预测，修正 E1；
+  - 强模型身份（revision + 内容哈希）；停止规则；
+  - 用 rep2 标准误换算的近似功效表；实现缺口清单。
+- 下一步：交审查方与 Codex 评审 v2 和整理后的资料；用户据 v2 §0 判断是否值得使用集群算力。
+- Codex v2 评审（v2-review-0654202.txt）：需修订后再评审，不建议冻结。已按 V1–V7 修订为草案 r1（不运行任何研究实验）：
+  - Q2 收窄为 8B 内部排序；
+  - H4 改为固定 R = 1 的结构律预测，对比常数基线（加权 MAE），定位为探索性；拟合 R 的版本改称迁移；
+  - 共用主读数只用 cobs；S_unit 写出 9 个任务的名单（含 UUID）与权重；
+  - 置换与 Holm 的参数写死；
+  - 功效改由 theory/power_v2.py 从 rep2 重采样得到（results/power_v2.log；效应减半时 H1/H2 的功效约 0.4–0.66）；
+  - README 中 R7 的指代、附录 §8.6 的机制归因已改正。
+  冻结 13/13。
+- Codex r1 复核（v2-r1-review-504ab33）接受主设计，功效数值独立重算吻合。草案 r2 补冻结前定义：R1-a（C 的空/单格状态；几何随样本重采样；无效抽取整体作废，超过 1% 记不可判定；H3 bootstrap 的空类别；κ 分母规则）、R1-b（3pp 改称 C 上的加权平均误差上界，分三种状态，与相对标签分开）；注明 H3 功效未模拟 UUID 类别变化；功效输入哈希写在 results/power_v2_inputs_sha256.txt（49 个数据与预测文件）。
+- v2 实现（只用 CPU，未运行实验）：cluster/plan_v2.json、cluster/make_jobs_v2.py（分 prep / predict 两个阶段，--revision 必填）、cluster/aggregate_v2.py（门控 v5：强模型身份、主样本与校准样本不相交、n=200 单元文件；复用冻结的 aggregate.py）、src/v2_stats.py；测试 check_v2_stats（27 项）、check_aggregate_v2（1 个正例、10 个反例）、check_v2_on_rep2（与 rep2 已报告的点估计一致）；check_all rc_all=0，冻结 13/13。
+- Codex 实现复核（v2-impl-review-83e0d68）判为不通过（I1–I5）。已修复（只用 CPU，未运行实验）：新增 cluster/v2_run_descriptor.py（register/verify/bind：完整权重分片哈希、40 位 revision、适配 ACCEPTED、显存余量、计划/数据/单元文件/代码哈希；预测前 verify，预测后 bind）；make_jobs_v2 的 predict 阶段需要 --rd，先 verify、每条预测后 bind；aggregate_v2 的期望值全部取自运行描述，并输出 registered_parameters / formal_v2_result 两个标志；κ 恢复 r2 的求和口径（独立构造的例子 .75，恰好 .005 处有边界测试）；H4 补覆盖、逐格缺类别计数和 B0。端到端测试 28 项（含 I1–I3 全部反例，并限定失败原因），统计测试全部通过；check_all rc_all=0。
+- Codex 复核 57267a2（v2-fix-review-57267a2）：I4、I5 关闭，I1、I3 判为已修复，I2 仍有两处阻断。已修复：I2-a 由结构化报告重新推出验收结论（覆盖、平局证据、结论文本一致性，以及验收 manifest 与模型和代码的绑定）；I2-b 检查显存探测的阶段覆盖与峰值一致性，并用 probe-receipt 收据绑定权重、代码和参数。端到端测试 44 项（上次交付说 28 项，实际是 27 项，系我计数有误），统计测试 36 项，全部通过；check_all rc_all=0；冻结 13/13；只用 CPU，未运行任何实验。
+- Codex 复核 d6ad9a4（v2-fix2-review-d6ad9a4）：I2 剩三处残留。已修复：(a) 新增 accept-receipt，在验收后立即写收据，记录完整输入（accept_adapter 目录布局、13 个任务的 dense 运行及两组方法的 ab/ba/single）、报告中的 uid 与各运行一一对应、独立的验收数据、完整的模型与代码哈希，以及报告/结论/诊断的哈希；登记时逐项复核并重新推出对应关系；验收顺序任务固定在 plan_v2.json（niah_single_1）。(b) 平局诊断要求字段完整，并按 input_equal、swap、margin ≤ 2 ulp 重算是否为平局（同时核对 margin = l1 − l2、ulp = ulp_bf16）。(c) 探测收据保留完整 sha256。端到端测试 57 项、统计测试 36 项，全部通过；check_all rc_all=0；冻结 13/13；只用 CPU。
+- Codex 复核 627c62d（v2-fix3-review-627c62d）：I2-b 关闭；I2-a.2 已修，另有零 logit 的兼容问题；I2-a.1 仍有阻断（顺序运行的预测与覆盖未核对，且收据可以被覆盖重写）。已修复：order_problems 按 accept_adapter 的方法，由绑定的行重新推出 identical 与 covered_rows，再与报告比对；收据不得覆盖（以 open 'x' 方式写入，已存在即拒绝）；新增 eval-run，在评价边界记录来源：评价前后输入哈希不变，输出由本次运行生成，并记录完整模型与代码哈希；报告、平局诊断、结论都必须带来源记录，accept-receipt 与 register 都会核对；prep 中的验收命令都经过 eval-run；ulp_bf16(0) = 2^-133，与冻结的生成程序一致。端到端测试 67 项（假评价程序，只用 CPU）、统计测试 36 项，全部通过；check_all rc_all=0；冻结 13/13。
+- Codex 复核 4ff254b（v2-fix4-review-4ff254b）：顺序证据、收据覆盖和零 logit 三项关闭；I2-a.1 剩“来源快照不要求必需输入”一处。已修复：evidence_problems 由验收布局独立推出各角色的必需输入（报告与平局诊断 = 全部验收运行的 manifest 与预测文件 + 验收数据；结论 = 报告 + 全部平局诊断），每份来源快照都必须包含全部必需键，且哈希与当前相同；布局推不出时拒绝。新增反例：报告评价只监视数据（不论之后有无改动）、平局诊断评价只监视数据、结论评价漏掉诊断——全部拒绝；完整监视后再改动的对照组也被拒绝。端到端测试 72 项、统计测试 36 项全部通过；check_all rc_all=0；冻结 13/13；只用 CPU。
+- 2026-10-19 Codex 复核闭环（v2-closure-297db75）：自 83e0d68 起的 I1–I5 实现问题全部关闭（独立复跑统计 36 项、端到端 72 项全部 OK，另加 7 个独立反例）。这只是实现层面的 CPU 合成验收，不代表模型结果，也不是冻结或运行授权；§4 的正式功效、真实显存、8B tokenizer / UUID 类别以及 §8 的记录，仍要等真实证据。用户未授权研究实验。

@@ -25,5 +25,14 @@ for t in check_g2f check_fixed_layout; do
   [ $rc -ne 0 ] && rc_all=1
 done
 $PY "$WT/cluster/make_jobs.py" --tier 3 --models-dir /m --out-root /o --dry_run || rc_all=1
+# plan v2 (DRAFT, not authorised): statistics, gate / aggregation, job generator
+for t in check_v2_stats check_aggregate_v2; do
+  out=$($PY "$WT/theory/$t.py" 2>&1); rc=$?
+  echo "$t rc=$rc: $(echo "$out" | tail -1)"
+  [ $rc -ne 0 ] && rc_all=1
+done
+for tier in 3 2 1; do
+  $PY "$WT/cluster/make_jobs_v2.py" --phase predict --tier $tier --models-dir /m --out-root /o --dry_run || rc_all=1
+done
 echo "rc_all=$rc_all"
 exit $rc_all

@@ -1,0 +1,9 @@
+value appendix @512: 1360 units, 560 samples (lines 20..99)
+  em           0.847
+  quest16      0.890
+  quest16+g2f  0.888
+  quest8       0.912
+A4 em - quest16 = -0.043 [-0.059, -0.027] (rule: lower > -0.02) -> 不成立
+A5 quest16+g2f - quest8 = -0.024 [-0.035, -0.014] (rule: lower > 0) -> 不成立
+   quest16+g2f - quest16 = -0.001 [-0.012, +0.010] (descriptive)
+rc=0

@@ -1,0 +1,4 @@
+determinism mean+g2f/niah_multikey_2 lines 0..13 (written before the crash): pred equal to round 1 14/14
+determinism mean+g2f/niah_multikey_2 lines 14..19 (written by the resume): pred equal to round 1 6/6
+GATE PASSED: every gated arm complete (b512 rep2 arms lines 0..99; b1024 lines 0..59; value arms lines 0..99)
+rc=0

@@ -1,0 +1,36 @@
+# content sha256 of /home/kooki3/models/qwen2.5-1.5b-instruct, computed 2026-10-18 14:29:55 CST.
+# Evidence ONLY for runs started after this time (rep2 b1024 / value appendix still in progress).
+# It does NOT establish the weight identity of earlier runs, whose manifests record size/mtime only (Codex review 70d0779).
+684888c0ebb17f374298b65ee2807526c066094c701bcc7ebbe1c1095f494fc1  ./.cache/huggingface/.gitignore
+f6572428f6d5e1575e73a1502895a8731f10757dfbb634909c6e154b849af91d  ./.cache/huggingface/CACHEDIR.TAG
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  ./.cache/huggingface/download/.gitattributes.lock
+0d3e5cdf666079a83cd0c7b53c216ebbdb94955e0d362e48d4987663dc1b390b  ./.cache/huggingface/download/.gitattributes.metadata
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  ./.cache/huggingface/download/LICENSE.lock
+5fb9a24ab90c83b33fb2c5d4ad13d1ff0f8ef324f024c62ff9db8da524fa9770  ./.cache/huggingface/download/LICENSE.metadata
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  ./.cache/huggingface/download/README.md.lock
+7b1b8c37f906b4f9c7053e7e08a3c630f4a72216729e86d3218c1f5aee47c93e  ./.cache/huggingface/download/README.md.metadata
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  ./.cache/huggingface/download/config.json.lock
+d26f0246487cbb9ecec7fd7f857e94ccedf40b7e88bf0b2908dd94bf2a63d656  ./.cache/huggingface/download/config.json.metadata
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  ./.cache/huggingface/download/generation_config.json.lock
+cd1f9658b06ec3bcc4c3bcb7f53aea90bf83007ca91a9bc5b1172c7677fd7453  ./.cache/huggingface/download/generation_config.json.metadata
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  ./.cache/huggingface/download/merges.txt.lock
+b4ec6fee1c08bd65483842b9eab44b8771bc1719a1a3db7afc86ea43c01c717b  ./.cache/huggingface/download/merges.txt.metadata
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  ./.cache/huggingface/download/model.safetensors.lock
+c7500c0edf84d3ae517e49aed77ecbcfa073c2e7e772102050e1992d27d5f607  ./.cache/huggingface/download/model.safetensors.metadata
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  ./.cache/huggingface/download/tokenizer.json.lock
+5c77866b8fa624369587cf080dc108a648e9b00ed6438467ed7bc885c23cfbe9  ./.cache/huggingface/download/tokenizer.json.metadata
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  ./.cache/huggingface/download/tokenizer_config.json.lock
+0bdba95305c80e2f4cce0d52a832a9e741b9fd42152a8022152c3f7656e4a7b2  ./.cache/huggingface/download/tokenizer_config.json.metadata
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  ./.cache/huggingface/download/vocab.json.lock
+d2e941b7375928d11ca73649f0eb7603f5a748478faf3a673ad741ecc6f491c0  ./.cache/huggingface/download/vocab.json.metadata
+a082aa90136d2ae502a01e2903f562868082d73473ac42cce3b6bc4559d1b5fe  ./.cache/huggingface/trees/989aa7980e4cf806f80c7fef2b1adb7bc71aa306.json
+11ad7efa24975ee4b0c3c3a38ed18737f0658a5f75a0a96787b576a78a023361  ./.gitattributes
+832dd9e00a68dd83b3c3fb9f5588dad7dcf337a0db50f7d9483f310cd292e92e  ./LICENSE
+2e1bcd8bd964728a820be709fa0f7b9dd54817a94fd2254c535df70c5e67fada  ./README.md
+98d2ff8cc47488d08a2b0b3acf4eb99ef210779b42bd48605f6b8e36acdbf670  ./config.json
+e558847a8b4402616f1273797b015104dc266fe4b520056fca88823ba8f8ebe6  ./generation_config.json
+599bab54075088774b1733fde865d5bd747cbcc7a547c5bc12610e874e26f5e3  ./merges.txt
+dd924a11b4c220f385b51ffa522daea7c9f3d850e31b162bb5661df483c6d3ee  ./model.safetensors
+c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539  ./tokenizer.json
+5b5d4f65d0acd3b2d56a35b56d374a36cbc1c8fa5cf3b3febbbfabf22f359583  ./tokenizer_config.json
+ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910  ./vocab.json

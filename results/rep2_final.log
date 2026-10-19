@@ -1,0 +1,179 @@
+== 2026-10-19 09:55:11 final rep2 verdict
+-- queue gate log (rc=0):
+determinism mean+g2f/niah_multikey_2 lines 0..13 (written before the crash): pred equal to round 1 14/14
+determinism mean+g2f/niah_multikey_2 lines 14..19 (written by the resume): pred equal to round 1 6/6
+GATE PASSED: every gated arm complete (b512 rep2 arms lines 0..99; b1024 lines 0..59; value arms lines 0..99)
+rc=0
+-- gate --value re-run here:
+determinism mean+g2f/niah_multikey_2 lines 0..13 (written before the crash): pred equal to round 1 14/14
+determinism mean+g2f/niah_multikey_2 lines 14..19 (written by the resume): pred equal to round 1 6/6
+GATE PASSED: every gated arm complete (b512 rep2 arms lines 0..99; b1024 lines 0..59; value arms lines 0..99)
+rc=0
+-- resource flags per (budget, arm, task) from the manifests:
+b1024 cobs+g2f niah_multikey_1 --vram-frac 0.6 --throttle 0.3
+b1024 cobs+g2f niah_multikey_2 --vram-frac 0.6 --throttle 0.3
+b1024 cobs+g2f niah_multiquery --vram-frac 0.6 --throttle 0.3
+b1024 cobs+g2f niah_multivalue --vram-frac 0.6 --throttle 0.3
+b1024 cobs+g2f niah_single_1 --vram-frac 0.6 --throttle 0.3
+b1024 cobs+g2f niah_single_2 --vram-frac 0.6 --throttle 0.3
+b1024 cobs+g2f vt --vram-frac 0.6 --throttle 0.3
+b1024 cobs niah_multikey_1 --vram-frac 0.6 --throttle 0.3
+b1024 cobs niah_multikey_2 --vram-frac 0.6 --throttle 0.3
+b1024 cobs niah_multiquery --vram-frac 0.6 --throttle 0.3
+b1024 cobs niah_multivalue --vram-frac 0.6 --throttle 0.3
+b1024 cobs niah_single_1 --vram-frac 0.6 --throttle 0.3
+b1024 cobs niah_single_2 --vram-frac 0.6 --throttle 0.3
+b1024 cobs vt --vram-frac 0.6 --throttle 0.3
+b1024 cobs16 niah_multikey_1 --vram-frac 0.6 --throttle 0.3
+b1024 cobs16 niah_multikey_2 --vram-frac 0.6 --throttle 0.3
+b1024 cobs16 niah_multiquery --vram-frac 0.6 --throttle 0.3
+b1024 cobs16 niah_multivalue --vram-frac 0.6 --throttle 0.3
+b1024 cobs16 niah_single_1 --vram-frac 0.6 --throttle 0.3
+b1024 cobs16 niah_single_2 --vram-frac 0.6 --throttle 0.3
+b1024 cobs16 vt --vram-frac 0.6 --throttle 0.3
+b1024 mean+g2f niah_multikey_1 --vram-frac 0.6 --throttle 0.3
+b1024 mean+g2f niah_multikey_2 --vram-frac 0.6 --throttle 0.3
+b1024 mean+g2f niah_multiquery --vram-frac 0.6 --throttle 0.3
+b1024 mean+g2f niah_multivalue --vram-frac 0.6 --throttle 0.3
+b1024 mean+g2f niah_single_1 --vram-frac 0.6 --throttle 0.3
+b1024 mean+g2f niah_single_2 --vram-frac 0.6 --throttle 0.3
+b1024 mean+g2f vt --vram-frac 0.6 --throttle 0.3
+b1024 quest32 niah_multikey_1 --vram-frac 0.6 --throttle 0.3
+b1024 quest32 niah_multikey_2 --vram-frac 0.6 --throttle 0.3
+b1024 quest32 niah_multiquery --vram-frac 0.6 --throttle 0.3
+b1024 quest32 niah_multivalue --vram-frac 0.6 --throttle 0.3
+b1024 quest32 niah_single_1 --vram-frac 0.6 --throttle 0.3
+b1024 quest32 niah_single_2 --vram-frac 0.6 --throttle 0.3
+b1024 quest32 vt --vram-frac 0.6 --throttle 0.3
+b512 cobs+g2f niah_multikey_1 --vram-frac 0.6 --throttle 0.3
+b512 cobs+g2f niah_multikey_2 --vram-frac 0.6 --throttle 0.3
+b512 cobs+g2f niah_multiquery --vram-frac 0.75 --throttle 0
+b512 cobs+g2f niah_multivalue --vram-frac 0.6 --throttle 0.3
+b512 cobs+g2f niah_single_1 --vram-frac 0.6 --throttle 0.3
+b512 cobs+g2f niah_single_2 --vram-frac 0.6 --throttle 0.3
+b512 cobs+g2f vt --vram-frac 0.6 --throttle 0.3
+b512 cobs niah_multikey_1 --vram-frac 0.6 --throttle 0.3
+b512 cobs niah_multikey_2 --vram-frac 0.6 --throttle 0.3
+b512 cobs niah_multiquery --vram-frac 0.75 --throttle 0
+b512 cobs niah_multivalue --vram-frac 0.6 --throttle 0.3
+b512 cobs niah_single_1 --vram-frac 0.6 --throttle 0.3
+b512 cobs niah_single_2 --vram-frac 0.6 --throttle 0.3
+b512 cobs vt --vram-frac 0.75 --throttle 0
+b512 cobs16 niah_multikey_1 --vram-frac 0.6 --throttle 0.3
+b512 cobs16 niah_multikey_2 --vram-frac 0.6 --throttle 0.3
+b512 cobs16 niah_multiquery --vram-frac 0.75 --throttle 0
+b512 cobs16 niah_multivalue --vram-frac 0.75 --throttle 0
+b512 cobs16 niah_single_1 --vram-frac 0.6 --throttle 0.3
+b512 cobs16 niah_single_2 --vram-frac 0.6 --throttle 0.3
+b512 cobs16 vt --vram-frac 0.6 --throttle 0.3
+b512 dense niah_multikey_1 --vram-frac 0.6 --throttle 0.3
+b512 dense niah_multikey_2 --vram-frac 0.6 --throttle 0.3
+b512 dense niah_multiquery --vram-frac 0.75 --throttle 0
+b512 dense niah_multivalue --vram-frac 0.6 --throttle 0.3
+b512 dense niah_single_1 --vram-frac 0.6 --throttle 0.3
+b512 dense niah_single_2 --vram-frac 0.6 --throttle 0.3
+b512 dense vt --vram-frac 0.75 --throttle 0
+b512 em niah_multikey_1 --vram-frac 0.75 --throttle 0
+b512 em niah_multikey_2 --vram-frac 0.75 --throttle 0
+b512 em niah_multiquery --vram-frac 0.75 --throttle 0
+b512 em niah_multivalue --vram-frac 0.75 --throttle 0
+b512 em niah_single_1 --vram-frac 0.6 --throttle 0.3
+b512 em niah_single_2 --vram-frac 0.75 --throttle 0
+b512 em vt --vram-frac 0.75 --throttle 0
+b512 mean+g2f niah_multikey_1 --vram-frac 0.6 --throttle 0.3
+b512 mean+g2f niah_multikey_2 --vram-frac 0.6 --throttle 0.3
+b512 mean+g2f niah_multiquery --vram-frac 0.75 --throttle 0
+b512 mean+g2f niah_multivalue --vram-frac 0.75 --throttle 0
+b512 mean+g2f niah_single_1 --vram-frac 0.6 --throttle 0.3
+b512 mean+g2f niah_single_2 --vram-frac 0.6 --throttle 0.3
+b512 mean+g2f vt --vram-frac 0.6 --throttle 0.3
+b512 mean niah_multikey_1 --vram-frac 0.6 --throttle 0.3
+b512 mean niah_multikey_2 --vram-frac 0.6 --throttle 0.3
+b512 mean niah_multiquery --vram-frac 0.75 --throttle 0
+b512 mean niah_multivalue --vram-frac 0.75 --throttle 0
+b512 mean niah_single_1 --vram-frac 0.6 --throttle 0.3
+b512 mean niah_single_2 --vram-frac 0.6 --throttle 0.3
+b512 mean vt --vram-frac 0.6 --throttle 0.3
+b512 quest16+g2f niah_multikey_1 --vram-frac 0.75 --throttle 0
+b512 quest16+g2f niah_multikey_2 --vram-frac 0.75 --throttle 0
+b512 quest16+g2f niah_multiquery --vram-frac 0.75 --throttle 0
+b512 quest16+g2f niah_multivalue --vram-frac 0.75 --throttle 0
+b512 quest16+g2f niah_single_1 --vram-frac 0.6 --throttle 0.3
+b512 quest16+g2f niah_single_2 --vram-frac 0.75 --throttle 0
+b512 quest16+g2f vt --vram-frac 0.75 --throttle 0
+b512 quest16 niah_multikey_1 --vram-frac 0.6 --throttle 0.3
+b512 quest16 niah_multikey_2 --vram-frac 0.6 --throttle 0.3
+b512 quest16 niah_multiquery --vram-frac 0.75 --throttle 0
+b512 quest16 niah_multivalue --vram-frac 0.75 --throttle 0
+b512 quest16 niah_single_1 --vram-frac 0.6 --throttle 0.3
+b512 quest16 niah_single_2 --vram-frac 0.6 --throttle 0.3
+b512 quest16 vt --vram-frac 0.6 --throttle 0.3
+b512 quest32+g2f niah_multikey_1 --vram-frac 0.6 --throttle 0.3
+b512 quest32+g2f niah_multikey_2 --vram-frac 0.6 --throttle 0.3
+b512 quest32+g2f niah_multiquery --vram-frac 0.75 --throttle 0
+b512 quest32+g2f niah_multivalue --vram-frac 0.75 --throttle 0
+b512 quest32+g2f niah_single_1 --vram-frac 0.6 --throttle 0.3
+b512 quest32+g2f niah_single_2 --vram-frac 0.6 --throttle 0.3
+b512 quest32+g2f vt --vram-frac 0.6 --throttle 0.3
+b512 quest32 niah_multikey_1 --vram-frac 0.6 --throttle 0.3
+b512 quest32 niah_multikey_2 --vram-frac 0.6 --throttle 0.3
+b512 quest32 niah_multiquery --vram-frac 0.75 --throttle 0
+b512 quest32 niah_multivalue --vram-frac 0.75 --throttle 0
+b512 quest32 niah_single_1 --vram-frac 0.6 --throttle 0.3
+b512 quest32 niah_single_2 --vram-frac 0.6 --throttle 0.3
+b512 quest32 vt --vram-frac 0.6 --throttle 0.3
+b512 quest8 niah_multikey_1 --vram-frac 0.75 --throttle 0
+b512 quest8 niah_multikey_2 --vram-frac 0.75 --throttle 0
+b512 quest8 niah_multiquery --vram-frac 0.75 --throttle 0
+b512 quest8 niah_multivalue --vram-frac 0.75 --throttle 0
+b512 quest8 niah_single_1 --vram-frac 0.75 --throttle 0
+b512 quest8 niah_single_2 --vram-frac 0.75 --throttle 0
+b512 quest8 vt --vram-frac 0.75 --throttle 0
+-- sha256 of the analysis inputs:
+52d924cb0f7e7ee4deec13b599bf67e02fc2708fc98ee68dfee87c7269a2cbda  /home/kooki3/projects/dual-channel-attention/.claude/worktrees/stage1-analysis/src/rep2_analysis.py
+cb1b0393e0788af639ae3a718825bdb5edfc1d36b896d8329458da59585c1f2d  /home/kooki3/projects/dual-channel-attention/.claude/worktrees/stage1-analysis/src/rep2_value_analysis.py
+77c232a43c02e67dde4cac5a2c7c9983e218b8da6a206dddbdcae6c4fa4fb7f2  /home/kooki3/projects/dual-channel-attention/.claude/worktrees/stage1-analysis/src/rep2_gate.py
+-- rep2_analysis.py (R1–R7):
+/home/kooki3/projects/dual-channel-attention/.venv/lib/python3.12/site-packages/numpy/lib/_nanfunctions_impl.py:1396: RuntimeWarning: All-NaN slice encountered
+  return _nanquantile_unchecked(
+determinism (lines 0..19 vs round 1) cobs        : pred equal 140/140
+determinism (lines 0..19 vs round 1) cobs+g2f    : pred equal 140/140
+determinism (lines 0..19 vs round 1) cobs16      : pred equal 140/140
+determinism (lines 0..19 vs round 1) mean        : pred equal 140/140
+determinism (lines 0..19 vs round 1) mean+g2f    : pred equal 140/140
+determinism (lines 0..19 vs round 1) quest32     : pred equal 140/140
+determinism (lines 0..19 vs round 1) quest32+g2f : pred equal 140/140
+determinism (lines 0..19 vs round 1) quest16     : pred equal 140/140
+rep2 @512: 1360 units, 560 samples (lines 20..99)
+  dense        0.956  in0 0.952  repair 0.960
+  cobs         0.535  in0 0.614  repair 0.382
+  cobs+g2f     0.593  in0 0.635  repair 0.512
+  mean         0.548  in0 0.651  repair 0.349
+  mean+g2f     0.622  in0 0.661  repair 0.549
+  quest32      0.846  in0 0.855  repair 0.824
+  quest32+g2f  0.855  in0 0.844  repair 0.873
+  cobs16       0.659  in0 0.685  repair 0.607
+  quest16      0.890  in0 0.874  repair 0.914
+R1 cobs16 - cobs+g2f = +0.065 [+0.037, +0.096] -> 复现
+R2 quest32 - mean+g2f = +0.224 [+0.196, +0.253] (rule on the LOWER bound >= 0.15) -> 复现
+R3 G_mean +0.302  G_cobs +0.231  G_quest +0.031;  G_mean - G_cobs +0.070 [+0.017, +0.124]; G_cobs - G_quest +0.201 [+0.143, +0.264] -> 完全复现
+R4 quest32+g2f - quest16 = -0.035; 90% [-0.048, -0.022] -> 等价; 95% [-0.050, -0.019]
+R5 cobs+g2f - cobs = +0.058 [+0.034, +0.082] -> 复现
+R5 mean+g2f - mean = +0.074 [+0.048, +0.100] -> 复现
+R6 pooled kappa +1.060 [+0.684, +1.600] -> 相符
+R6 cobs  kappa +1.183 [+0.603, +2.398] -> 相符  (R_repair +0.86, inside +0.029)
+R6 mean  kappa +0.996 [+0.592, +1.580] -> 相符  (R_repair +0.88, inside +0.012)
+R6 quest kappa +0.951 [-5.017, +10.055] -> 不确定  (R_repair +1.35, inside -0.005)
+R7 @1024 (680 units, lines 20..59): R1 point +0.059 (512: +0.065) -> 方向一致; R2 point +0.097 (512: +0.224) -> 方向一致
+analysis rc=0
+-- rep2_value_analysis.py (A4, A5; also in /home/kooki3/projects/dual-channel-attention/.claude/worktrees/stage1-analysis/results/rep2_value.log):
+value appendix @512: 1360 units, 560 samples (lines 20..99)
+  em           0.847
+  quest16      0.890
+  quest16+g2f  0.888
+  quest8       0.912
+A4 em - quest16 = -0.043 [-0.059, -0.027] (rule: lower > -0.02) -> 不成立
+A5 quest16+g2f - quest8 = -0.024 [-0.035, -0.014] (rule: lower > 0) -> 不成立
+   quest16+g2f - quest16 = -0.001 [-0.012, +0.010] (descriptive)
+rc=0
+final rc=0

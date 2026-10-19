@@ -1,0 +1,17 @@
+rep2 inputs: 1360 units, 560 samples, tasks ['niah_multikey_1', 'niah_multikey_2', 'niah_multiquery', 'niah_multivalue', 'niah_single_1', 'niah_single_2', 'vt']; resampled to 100/task, B=4000, seed 20261019
+decision: one-sided, strictest Holm step alpha 0.05/3, z=2.128; MDE(power 0.8) = (z + 0.8416) * SE
+H1 cobs16 - cobs+g2f [as rep2 tasks]: rep2 point +0.065, effect used +0.065, SE(n=100) 0.0131, MDE 0.039
+    variance x1.0: power at effect x1: 1.00  x0.5: 0.64  x0.25: 0.19
+    variance x1.5: power at effect x1: 0.97  x0.5: 0.46  x0.25: 0.13
+H1 cobs16 - cobs+g2f [+2 UUID tasks (zero-mean diffs)]: rep2 point +0.065, effect used +0.059, SE(n=100) 0.0122, MDE 0.036
+    variance x1.0: power at effect x1: 1.00  x0.5: 0.61  x0.25: 0.18
+    variance x1.5: power at effect x1: 0.96  x0.5: 0.44  x0.25: 0.13
+H2 quest8 - quest16+g2f [as rep2 tasks]: rep2 point +0.024, effect used +0.024, SE(n=100) 0.0048, MDE 0.014
+    variance x1.0: power at effect x1: 1.00  x0.5: 0.66  x0.25: 0.20
+    variance x1.5: power at effect x1: 0.98  x0.5: 0.48  x0.25: 0.14
+H2 quest8 - quest16+g2f [+2 UUID tasks (zero-mean diffs)]: rep2 point +0.024, effect used +0.022, SE(n=100) 0.0048, MDE 0.014
+    variance x1.0: power at effect x1: 0.99  x0.5: 0.55  x0.25: 0.16
+    variance x1.5: power at effect x1: 0.94  x0.5: 0.39  x0.25: 0.11
+H3 G_cobs - G_quest32 [as rep2 tasks]: rep2 point +0.201, effect used +0.201, SE(n=100) 0.0287, MDE 0.085
+    variance x1.0: power at effect x1: 1.00  x0.5: 0.91  x0.25: 0.35
+    variance x1.5: power at effect x1: 1.00  x0.5: 0.77  x0.25: 0.24

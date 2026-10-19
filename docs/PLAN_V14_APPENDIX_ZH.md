@@ -1,5 +1,7 @@
 # 计划 v1.4 附录（描述性，不改检验定义；2026-10-17；审查方批次 11，F2）
 
+> **状态更新（2026-10-19）**：本附录随 v1.4 一起不再执行；它要复现的开发结论已由 rep2 在新样本上检验（见 README“结论”）。
+
 > 冻结的计划 v1.4（docs/EXPERIMENT_PLANS_ZH.md、cluster/plan_v1.json、cluster/make_jobs.py 等 13 个文件）**不改**。本附录只为主格增加几组描述性对照，
 > 让集群也能复现本机开发结论（docs/THEORY_ADDENDUM_ZH.md 附录 A4）。附录的任何读数都不进入主比较或 Holm 族，也不改变它们的判定。
 > 冻结计划 §2 把分隔符分块列为“未实现”，那是冻结时的状态；本附录中它以 delim_cobs 的形式实现（src/delim_attn.py，开发实现）。

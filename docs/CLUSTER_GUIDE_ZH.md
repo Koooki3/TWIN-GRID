@@ -1,5 +1,7 @@
 # TWIN-GRID 集群运行指南（v1，2026-10-16，对应计划 v1.4）
 
+> **状态更新（2026-10-19）**：**当前没有获准的集群运行。** v1.4 的主比较已被 rep2 结论取代（见 README“结论”）；v2 草案（docs/PLAN_V2_COGNITIVE_ZH.md）冻结前须补齐其 §4 的实现缺口并经审查，届时本指南会相应更新。下文保留 v1.4 的流程供追溯。
+
 > 面向在显卡集群上执行实验的 agent 或研究者。**项目名 TWIN-GRID**（错位双网格候选选择；Two offset candidate grids for
 > budget-matched sparse attention）= 当前实现 g2_fill_v1 = 实验臂后缀 `+g2f`。实验矩阵、主比较与统计规则以
 > [EXPERIMENT_PLANS_ZH.md](EXPERIMENT_PLANS_ZH.md) 为准，机器可读副本是 `cluster/plan_v1.json`。

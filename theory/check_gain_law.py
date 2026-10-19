@@ -1,6 +1,6 @@
 """Self-check of cluster/gain_law.analyse on simulated cells where the gain law holds exactly in expectation
 (R_repair = 1, R_out = 0, no inside change) and where it fails (R_repair = 0.5): kappa must cover 1 in the first case
-and exclude 1 in the second; the cross-fitted kappa must be closer to 1 than the same-sample one on average.
+and exclude 1 in the second; the cross-fitted kappa must not be noticeably worse (bias check: at most 0.02 farther from 1 than the same-sample one on average) — this says nothing about independence (erratum E1, docs/THEORY_ADDENDUM_ZH.md).
 Exit 1 on failure."""
 import os
 import sys
@@ -55,6 +55,6 @@ for r in range(40):
     ss.append(sum(x["delta"] for x in full.values()) / sum(x["pi"] * x["G"] for x in full.values()))
 print(f"replications: cross-fitted kappa mean {np.mean(cf):.3f}; same-sample kappa mean {np.mean(ss):.3f}")
 if abs(np.mean(cf) - 1) > abs(np.mean(ss) - 1) + 0.02:
-    bad.append("cross-fitting not closer to 1 than same-sample")
+    bad.append("cross-fitted kappa noticeably farther from 1 than same-sample (bias check)")
 print("PROBLEMS", bad if bad else "none")
 sys.exit(1 if bad else 0)
